@@ -1,13 +1,13 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-var prefix = "b!"
+var prefix = "!"
 
 
 
 //bc
 
 client.on("message", message => {
-    if (message.content.startsWith("b!obc")) {
+    if (message.content.startsWith("!bc")) {
                  if (!message.member.hasPermission("ADMINISTRATOR"))  return;
   let args = message.content.split(" ").slice(1);
   var argresult = args.join(' ');
@@ -23,11 +23,11 @@ client.on("message", message => {
 //bc online
 
 
-  var prefix = "b!";
+  var prefix = "!";
 
   client.on("message", message => {
   
-              if (message.content.startsWith(prefix + "bc")) {
+              if (message.content.startsWith(prefix + "!obc")) {
                            if (!message.member.hasPermission("ADMINISTRATOR"))  return;
     let args = message.content.split(" ").slice(1);
     var argresult = args.join(' '); 
@@ -79,8 +79,8 @@ m.sendMessage(args)
 
   
   client.on('message', msg => {
-    if(msg.content === 'b!help')
-    msg.reply('Check Your DM :white_check_mark:')
+    if(msg.content === '!help')
+    msg.reply('Check Your DM Star Bots :heart::white_check_mark:')
   });
   
   
@@ -93,19 +93,22 @@ m.sendMessage(args)
   
   
   client.on("message", message => {
-    if (message.content === "b!help") {
+    if (message.content === "!help") {
      const embed = new Discord.RichEmbed() 
          .setColor("#00FF00")
          .setThumbnail(message.author.avatarURL)
          .setDescription(`**Help|هيلب
 
-       b!obc | لأرسال برود كاست للكل
+       !bc | لأرسال برود كاست للكل
 
-       b!bc  |  لأرسال برود كاست للأونلاين
+       !obc  |  لأرسال برود كاست للأونلاين
 
        b!invite | لدعوة البوت الي سيرفرك
 
-       b!support | سيرفر السبورت** `)
+       b!support | سيرفر السبورت
+       Bot By Yas.sine** `)
+     
+            
    message.author.sendEmbed(embed)
    
    }
@@ -113,10 +116,10 @@ m.sendMessage(args)
 
 
    client.on("message", message => {
-    if (message.content === "b!invite") {
+    if (message.content === "!invite") {
      const embed = new Discord.RichEmbed()
          .setColor("RANDOM")
-         .addField('Broadcast', `https://discordapp.com/api/oauth2/authorize?client_id=489960386339274771&permissions=8&scope=bot`)
+         .addField('Broadcast', `Nope Bot By Yas.sine Ask Him For Invite It :heart:`)
      message.author.send({embed});
    
     }
@@ -124,10 +127,10 @@ m.sendMessage(args)
 
 
    client.on("message", message => {
-    if (message.content === "b!support") {
+    if (message.content === "!support") {
      const embed = new Discord.RichEmbed()
          .setColor("RANDOM")
-         .addField('❤سيرفر الدعم الفني', `  https://discord.gg/NuQ2zYu  `)
+         .addField('❤سيرفر الدعم الفني', `  https://discord.gg/MQmFd85  `)
      message.author.send({embed});
    
     }
@@ -160,7 +163,7 @@ m.sendMessage(args)
 
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag} !`);
-          client.user.setActivity("b!help | b!invite",{type: 'WATCHING'});
+          client.user.setActivity("!help Star Bot",{type: 'WATCHING'});
   
   });
 
