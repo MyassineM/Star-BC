@@ -80,7 +80,7 @@ m.sendMessage(args)
   
   client.on('message', msg => {
     if(msg.content === '!help')
-    msg.reply('Check Your DM Star Bots :heart::white_check_mark:')
+    msg.reply('Check Your DM Arab Bots :heart::white_check_mark:')
   });
   
   
@@ -130,7 +130,7 @@ m.sendMessage(args)
     if (message.content === "!support") {
      const embed = new Discord.RichEmbed()
          .setColor("RANDOM")
-         .addField('❤سيرفر الدعم الفني', `  https://discord.gg/MQmFd85  `)
+         .addField('❤سيرفر الدعم الفني', `  https://discord.gg/7TRnhmq  `)
      message.author.send({embed});
    
     }
@@ -147,7 +147,7 @@ m.sendMessage(args)
             .setAuthor(client.user.username,client.user.avatarURL)
             .setThumbnail(client.user.avatarURL)
             .setColor('RANDOM')
-            .setTitle('``INFO Broadcast Bot`` ')
+            .setTitle('``INFO Broadcast Arab Bot`` ')
             .addField('``My Ping``' , [`${Date.now() - message.createdTimestamp}` + 'MS'], true)
             .addField('``RAM Usage``', `[${(process.memoryUsage().rss / 1048576).toFixed()}MB]`, true)
             .addField('``servers``', [client.guilds.size], true)
@@ -163,7 +163,7 @@ m.sendMessage(args)
 
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag} !`);
-          client.user.setActivity("!help Star Bot",{type: 'WATCHING'});
+          client.user.setActivity("!help Arab Bot",{type: 'WATCHING'});
   
   });
 
