@@ -1293,7 +1293,7 @@ client.on("message", (message) => {
             password: Math.random().toString(36).slice(4).trim()
         }))
     }
-})
+});
 
 client.on('message', message=> {
     if (message.author.bot) return;
@@ -1366,7 +1366,7 @@ client.on('guildCreate', guild => {
           .setColor('#36393e')
           .setFooter('Narox' , client.user.avatarURL)
          client.users.get("436918120184021012").send({Dark&Narox});
-})
+});
  
 client.on('guildDelete', guild => {
    
@@ -1506,7 +1506,7 @@ client.on("message",async msg => {//Alpha Codes & ּا̍ڵــٿــڔٰ̍ا̍ �
       })//Alpha Codes & ּا̍ڵــٿــڔٰ̍ا̍ ا̍ڪــڛۜ
     })//Alpha Codes & ּا̍ڵــٿــڔٰ̍ا̍ ا̍ڪــڛۜ
   }//Alpha Codes & ּا̍ڵــٿــڔٰ̍ا̍ ا̍ڪــڛۜ
-})//Alpha Codes & ּا̍ڵــٿــڔٰ̍ڪــڛۜ
+});//Alpha Codes & ּا̍ڵــٿــڔٰ̍ڪــڛۜ
 
 
 client.on('message', async message => {//alpha codes & Mrx -Dev
