@@ -277,6 +277,72 @@ client.on('guildMemberAdd', member=> {
     member.addRole(member.guild.roles.find("name","Saturn"));
     });
 
+client.on('message', message => {
+  var prefix = "!"
+          if(message.content.startsWith(prefix + 'skin')) {
+              let args = message.content.split(' ').slice(1).join(' ');
+              if (!args) return message.channel.send("**من فضلك ضع إسمك**");
+              var link = (`https://minotar.net/body/${args}/100.png`);
+              message.channel.send(link);
+          }
+      });
+
+client.on("message", async (message) => {
+    if (!prefix) {
+        var prefix = "!";
+    }
+    var args = message.content.slice(prefix.length).split(" ");
+    var cmd = args[0];
+    switch(cmd) {
+        case "timer":
+        if (!args[1]) {
+            message.reply(`من فضلك أكتب الوقت .. مثال : ${prefix}timer 5`);
+            return undefined;
+        }
+        if (isNaN(args[1])) {
+            message.reply(`هذا ليس رقم صالح`);
+            return undefined;
+        }
+        function endTimer() {
+            message.channel.send("إنتهى الوقت" + args[1]);
+        }
+        setInterval(endTimer, parseInt(args[1])*1000);
+        break;
+    }
+});
+
+client.on("message", message => {
+    var prefix = "!";
+            var args = message.content.substring(prefix.length).split(" ");
+            if (message.content.startsWith(prefix + "clear")) {
+ if (!args[1]) {
+                                let x5bz1 = new Discord.RichEmbed()
+                                .setDescription("#clear <number>")
+                                .setColor("#0000FF")
+                                message.channel.sendEmbed(x5bz1);
+                            } else {
+                            let messagecount = parseInt(args[1]);
+                            message.channel.fetchMessages({limit: messagecount}).then(messages => message.channel.bulkDelete(messages));
+                                                          message.channel.fetchMessages({limit: messagecount}).then(messages => message.channel.bulkDelete(messages));
+                            message.channel.fetchMessages({limit: messagecount}).then(messages => message.channel.bulkDelete(messages));
+                            let x5bz2 = new Discord.RichEmbed()
+                                                            .setColor("#008000")
+                                .setDescription(":white_check_mark: | Delete " + args[1] + " Message!")
+                                                                                        message.delete("..");
+                                message.channel.sendEmbed(x5bz2);
+                            }
+                          }
+});
+
+client.on('message' , message => {
+  if(message.author.bot) return;
+  if(message.content.startsWith(prefix + "!ping")) {
+ message.channel.send('pong').then((msg) => {
+var PinG = `${Date.now() - msg.createdTimestamp}`
+var ApL = `${Math.round(client.ping)}`
+      msg.edit(`\`\`\`javascript\nTime taken: ${PinG} ms.\nDiscord API: ${ApL} ms.\`\`\``);
+ })
+  }
 
 
 client.login(process.env.TOKEN);
