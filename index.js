@@ -530,31 +530,6 @@ var mentionned = message.mentions.users.first();
     }
 });
 	    
-client.on('message', message => {
-        
-   if(message.content.startsWith(prefix + 'timer')) {
-         let args = message.content.split(' ').slice(1);
-  let Timer = args[0];
-
-  if(!args[0]){
-    return message.channel.send(":x: " + "| Please Enter a time period followed by \"s or m or h\"");
-  }
-
-  if(args[0] <= 0){
-    return message.channel.send(":x: " + "| Please Enter a time period followed by \"s or m or h\"");
-  }
-
-  message.channel.send(":white_check_mark: " + "| Timer Started for: " + `${ms(ms(Timer), {long: true})}`)
-
-  setTimeout(function(){
-    message.channel.send(message.author.toString() + ` The Timer Has FINISHED!, it lasted: ${ms(ms(Timer), {long: true})}`)
-
-  }, ms(Timer));
-
-    }
-});
-	    
-
 	    
 client.on('message', message => {
     if(message.content == '!members') {
@@ -572,44 +547,5 @@ client.on('message', message => {
     }
   });
 	    
-	    
-client.on("message", message => {
 
- if(message.content.startsWith('!احصاء')) {
-     
-     const embed = new Discord.RichEmbed()
-.setColor(0xffffff)
-.setTitle(`** احصاءات الالعاب :chart_with_upwards_trend:  **`)
-.addField('**عدد مرات اللعب :**',
-games[message.author.id].loses  + games[message.author.id].wins
-,true)
-
-.addField('**عدد مرات الفوز :**',
-`
- ${games[message.author.id].wins}
- `
-,true)
-
-.addField('**عدد مرات الخسارة :**',
-`
- ${games[message.author.id].loses}
- `
-,true)
-
-.addField('**مجموع الكريدت الي فزت فيه  :**',
-`
- ${games[message.author.id].wins}` * 25
- 
-,true)
-.setFooter(message.author.username, message.author.avatarURL)
-message.channel.sendEmbed(embed);
-     
-     
-     
- }
-
-});
-	    
-	   
-	   
 client.login(process.env.TOKEN);
