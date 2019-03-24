@@ -167,4 +167,116 @@ client.on('ready', () => {
   
   });
 
+client.on('message', message => {
+    if (message.content === ('!server')) {
+    message.channel.send({
+        embed: new Discord.RichEmbed()
+            .setAuthor(client.user.username,client.user.avatarURL)
+            .setThumbnail(client.user.avatarURL)
+            .setColor('RANDOM')
+            .addField('**Bot Ping**🚀 :' , [`${Date.now() - message.createdTimestamp}` + 'MS'], true)
+            .addField('**Servers**📚 :', [client.guilds.size], true)
+            .addField('**Channels**📝 :' , `[ ${client.channels.size} ]` , true)
+            .addField('**Users**🔮 :' ,`[ ${client.users.size} ]` , true)
+            .addField('**Bot Name**🔰 :' , `[ ${client.user.tag} ]` , true)
+            .addField('**Bot Owner**👑 :' , `[<@507533148897411082>]` , true)
+            .setFooter(message.author.username, message.author.avatarURL)
+    })
+}
+});//toxic codes
+
+client.on("message", msg => {//So-92.#0885
+    if(msg.author.bot) return;
+if(msg.channel.type === 'dm') return;
+
+let p = "!";//البرفكس
+let msgarray = msg.content.split(" ");//So-92.#0885
+let cmd = msgarray[0];//So-92.#0885
+let args = msgarray.slice(1);
+
+if(cmd === `${p}ban`){
+    let bUser = msg.guild.member(msg.mentions.users.first() || msg.guild.members.get(args[0]));
+if(!bUser) return msg.channel.send("استخدم: `[ ${p}ban @user <السبب> ] مثال : ${p} @So-92.#0885 نشر`");
+let breason = args.join(" ").slice(22);
+if(!msg.member.hasPermission("BAN_MEMBERS")) return msg.channel.send("ليس لديك الصلاحية الكافية ❌").then(s => {
+s.delete(1600);
+})
+ if(!msg.guild.me.hasPermission("BAN_MEMBERS")) return msg.channel.send("انا ليس لدي صلاحية كافية ❌").then(z => {
+z.delete(1600);
+})
+if(bUser.hasPermission("BAN_MEMBERS")) return msg.channel.send("لا يمكنني ان احظر اداري").then(bs => {
+bs.delete(1600);
+})
+//So-92.#0885
+let banembed = new Discord.RichEmbed()
+.setDescription("~ban~")
+.setColor("BLACK")
+.addField("banned User", `${bUser} with ID: ${bUser.id}`)
+.addField("banned By", `<@${msg.author.id}> with ID: ${msg.author.id}`)
+.addField("banned In", msg.channel)
+.addField("Time", msg.createdAt)
+.addField("Reason", breason)
+//So-92.#0885
+let banChannel = msg.guild.channels.find("name","log-bans");
+if(!banChannel) return msg.channel.send(`اكتب ${p}banslog`).then(pb => {
+pb.delete(1600);
+})
+//So-92.#0885
+msg.guild.member(bUser).ban();
+msg.reply("تم بنجاح").then(ps => {
+ps.edit("✅").then(ss => {
+ss.delete(1500)
+})
+})
+banChannel.send(banembed)
+    return;
+}
+
+
+});//So-92.#0885
+
+
+client.on('ready',  () => {
+            console.log(`!S`);
+    client.user.setGame("suupr", "https://www.twitch.tv/idk");
+});
+// كود الواتشينق
+client.on('ready', () => {
+        console.log(`!W`);
+              client.user.setActivity("suuupr", {type: 'WATCHING'});
+      
+      });
+// كود اللينسق
+      client.on('ready', () => {
+        console.log(`!L`);
+              client.user.setActivity("suupr", {type: 'LISTENING'});
+      
+      });   // Toxic Code
+
+client.on('message', msg => {
+  if(msg.content === '.')
+  msg.reply('**Welcome To **__Saturn Server__ 🌷,🍃')
+});
+
+client.on('message', msg => {
+  if(msg.content === 'هلا')
+  msg.reply('هلا بيك')
+});
+
+client.on('message', msg => {
+  if(msg.content === 'سلام عليكم')
+  msg.reply('وعليكم السلام')
+});
+
+client.on('message', msg => {
+  if(msg.content === 'سلام')
+  msg.reply('سلام حب ❤')
+});
+
+client.on('guildMemberAdd', member=> {
+    member.addRole(member.guild.roles.find("name","Saturn"));
+    });
+
+
+
 client.login(process.env.TOKEN);
