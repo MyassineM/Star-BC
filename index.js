@@ -576,7 +576,7 @@ client.on('guildMemberAdd', member => {
 client.on('message', message => {
 const prefix = '!'	
     if(message.content === prefix + 'ccolors') {
-                         if(!message.channel.guild) return message.channel.send('**This Commnad only For Servers !**'); 
+                       if(!message.channel.guild) return message.channel.send('**This Commnad only For Servers !**'); 
          if(!message.member.hasPermission('ADMINISTRATOR')) return    message.channel.send('**You Dont Have** `ADMINISTRATOR` **premission**').then(msg => msg.delete(6000))
       message.guild.createRole({
                   name: "1",
@@ -608,55 +608,7 @@ const prefix = '!'
                     color: "#646464",
                     permissions: []
      })
-                     message.guild.createRole({
-                  name: "7",
-                    color: "#787878",
-                    permissions: []
-     })
-                     message.guild.createRole({
-                  name: "8",
-                    color: "#8d8c8c",
-                    permissions: []
-     })
-                     message.guild.createRole({
-                  name: "8",
-                    color: "#9a9a9a",
-                    permissions: []
-     })
-                     message.guild.createRole({
-                  name: "9",
-                    color: "#afaeae",
-                    permissions: []
-     })
-                     message.guild.createRole({
-                  name: "10",
-                    color: "#bcbbbb",
-                    permissions: []
-     })
-                     message.guild.createRole({
-                  name: "11",
-                    color: "#8504fa",
-                    permissions: []
-     })
-                     message.guild.createRole({
-                  name: "12",
-                    color: "#7607dd",
-                    permissions: []
-     })
-                     message.guild.createRole({
-                  name: "13",
-                    color: "#6a05c8",
-                    permissions: []
-     })
-                          message.guild.createRole({
-                  name: "14",
-                    color: "#6006b4",
-                    permissions: []
-     })
-                          message.guild.createRole({
-                  name: "15",
-                    color: "#5a07a8",
-                    permissions: []
+                     message.
      })
                                message.guild.createRole({
                   name: "16",
@@ -685,52 +637,7 @@ const prefix = '!'
      })
                                     message.guild.createRole({
                   name: "21",
-                    color: "#ef069b",
-                    permissions: []
-     })
-                                    message.guild.createRole({
-                  name: "22",
-                    color: "#c30781",
-                    permissions: []
-     })
-                                    message.guild.createRole({
-                  name: "23",
-                    color: "#a80871",
-                    permissions: []
-     })
-                                    message.guild.createRole({
-                  name: "24",
-                    color: "#970966",
-                    permissions: []
-     })
-                                    message.guild.createRole({
-                  name: "25",
-                    color: "#7f0956",
-                    permissions: []
-     })
-                                    message.guild.createRole({
-                  name: "26",
-                    color: "#6e094b",
-                    permissions: []
-     })
-                                    message.guild.createRole({
-                  name: "27",
-                    color: "#4e0735",
-                    permissions: []
-     })
-                                    message.guild.createRole({
-                  name: "28",
-                    color: "#f80854",
-                    permissions: []
-     })
-                                    message.guild.createRole({
-                  name: "29",
-                    color: "#db064a",
-                    permissions: []
-     })
-                                         message.guild.createRole({
-                  name: "30",
-                    color: "#ca0745",
+                    45",
                     permissions: []
      })
                                          message.guild.createRole({
@@ -760,55 +667,7 @@ const prefix = '!'
      })
                                          message.guild.createRole({
                   name: "36",
-                    color: "#d6071b",
-                    permissions: []
-     })
-                                         message.guild.createRole({
-                  name: "37",
-                    color: "#b60516",
-                    permissions: []
-     })
-                                         message.guild.createRole({
-                  name: "38",
-                    color: "#a80515",
-                    permissions: []
-     })
-                                         message.guild.createRole({
-                  name: "39",
-                    color: "#8d0512",
-                    permissions: []
-     })
-                                         message.guild.createRole({
-                  name: "40",
-                    color: "#7f0410",
-                    permissions: []
-     })
-                                         message.guild.createRole({
-                  name: "41",
-                    color: "#6b030d",
-                    permissions: []
-     })
-                                         message.guild.createRole({
-                  name: "42",
-                    color: "#06bcf3",
-                    permissions: []
-     })
-                                         message.guild.createRole({
-                  name: "43",
-                    color: "#099dca",
-                    permissions: []
-     })
-                                         message.guild.createRole({
-                  name: "44",
-                    color: "#098db6",
-                    permissions: []
-     })
-                                         message.guild.createRole({
-                  name: "45",
-                    color: "#057a9e",
-                    permissions: []
-     })
-                                         message.guild.createRole({
+                    ssage.guild.createRole({
                   name: "46",
                     color: "#06637f",
                     permissions: []
