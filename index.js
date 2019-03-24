@@ -249,7 +249,7 @@ client.on('ready', () => {
       });   // Toxic Code
 //  كود البلاينق 
 client.on('ready', () => {
-        console.log(`!W`);
+        console.log(`!P`);
               client.user.setActivity("Saturn Server", {type: 'PLAYING'});
       
       });
