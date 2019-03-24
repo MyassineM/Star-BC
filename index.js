@@ -27,7 +27,7 @@ client.on("message", message => {
 
   client.on("message", message => {
   
-              if (message.content.startsWith(prefix + "!obc")) {
+              if (message.content.startsWith(prefix + "obc")) {
                            if (!message.member.hasPermission("ADMINISTRATOR"))  return;
     let args = message.content.split(" ").slice(1);
     var argresult = args.join(' '); 
@@ -80,7 +80,7 @@ m.sendMessage(args)
   
   client.on('message', msg => {
     if(msg.content === '!help')
-    msg.reply('Check Your DM Arab Bots :heart::white_check_mark:')
+    msg.reply('Check Your DM Saturn Bot :heart::white_check_mark:')
   });
   
   
@@ -103,10 +103,10 @@ m.sendMessage(args)
 
        !obc  |  لأرسال برود كاست للأونلاين
 
-       b!invite | لدعوة البوت الي سيرفرك
+       !invite | لدعوة البوت الي سيرفرك
 
-       b!support | سيرفر السبورت
-       Bot By Yas.sine** `)
+       !support | سيرفر السبورت
+       Bot By Saturn Server** `)
      
             
    message.author.sendEmbed(embed)
@@ -141,7 +141,7 @@ m.sendMessage(args)
 
 
    client.on('message', message => {
-    if (message.content.startsWith("b!bot")) {
+    if (message.content.startsWith("!bot")) {
     message.channel.send({
         embed: new Discord.RichEmbed()
             .setAuthor(client.user.username,client.user.avatarURL)
@@ -161,11 +161,6 @@ m.sendMessage(args)
 }
 });
 
-client.on('ready', () => {
-    console.log(`Logged in as ${client.user.tag} !`);
-          client.user.setActivity("!help Arab Bot",{type: 'WATCHING'});
-  
-  });
 
 client.on('message', message => {
     if (message.content === ('!server')) {
@@ -238,20 +233,26 @@ banChannel.send(banembed)
 
 client.on('ready',  () => {
             console.log(`!S`);
-    client.user.setGame("suupr", "https://www.twitch.tv/idk");
+    client.user.setGame("Saturn Server", "https://www.twitch.tv/idk");
 });
 // كود الواتشينق
 client.on('ready', () => {
         console.log(`!W`);
-              client.user.setActivity("suuupr", {type: 'WATCHING'});
+              client.user.setActivity("Saturn Server", {type: 'WATCHING'});
       
       });
 // كود اللينسق
       client.on('ready', () => {
         console.log(`!L`);
-              client.user.setActivity("suupr", {type: 'LISTENING'});
+              client.user.setActivity("Saturn Server", {type: 'LISTENING'});
       
       });   // Toxic Code
+//  كود البلاينق 
+client.on('ready', () => {
+        console.log(`!W`);
+              client.user.setActivity("Saturn Server", {type: 'PLAYING'});
+      
+      });
 
 client.on('message', msg => {
   if(msg.content === '.')
@@ -356,5 +357,244 @@ client.on("message", (message) => {
    }
  
 });
+
+client.on("message", message => {
+ 
+    var args = message.content.split(' ').slice(1);
+    var msg = message.content.toLowerCase();
+    if( !message.guild ) return;
+    if( !msg.startsWith( prefix + 'role' ) ) return;
+    if( msg.toLowerCase().startsWith( prefix + 'rerole' ) ){
+        if( !args[0] ) return message.reply( '**:x: يرجى وضع الشخص المراد سحب منه الرتبة**' );
+        if( !args[1] ) return message.reply( '**:x: يرجى وضع الرتبة المراد سحبها من الشخص**' );
+        var role = msg.split(' ').slice(2).join(" ").toLowerCase();
+        var role1 = message.guild.roles.filter( r=>r.name.toLowerCase().indexOf(role)>-1 ).first();
+        if( !role1 ) return message.reply( '**:x: يرجى وضع الرتبة المراد سحبها من الشخص**' );if( message.mentions.members.first() ){
+            message.mentions.members.first().removeRole( role1 );
+            return message.reply('**:white_check_mark: [ '+role1.name+' ] رتبة [ '+args[0]+' ] تم سحب من **');
+        }
+        if( args[0].toLowerCase() == "all" ){
+            message.guild.members.forEach(m=>m.removeRole( role1 ))
+            return  message.reply('**:white_check_mark: [ '+role1.name+' ] تم سحب من الكل رتبة**');
+        } else if( args[0].toLowerCase() == "bots" ){
+            message.guild.members.filter(m=>m.user.bot).forEach(m=>m.removeRole(role1))
+            return  message.reply('**:white_check_mark: [ '+role1.name+' ] تم سحب من البوتات رتبة**');
+        } else if( args[0].toLowerCase() == "humans" ){
+            message.guild.members.filter(m=>!m.user.bot).forEach(m=>m.removeRole(role1))
+            return  message.reply('**:white_check_mark: [ '+role1.name+' ] تم سحب من البشريين رتبة**');
+        }  
+    } else {
+        if( !args[0] ) return message.reply( '**:x: يرجى وضع الشخص المراد اعطائها الرتبة**' );
+        if( !args[1] ) return message.reply( '**:x: يرجى وضع الرتبة المراد اعطائها للشخص**' );
+        var role = msg.split(' ').slice(2).join(" ").toLowerCase();
+        var role1 = message.guild.roles.filter( r=>r.name.toLowerCase().indexOf(role)>-1 ).first();
+        if( !role1 ) return message.reply( '**:x: يرجى وضع الرتبة المراد اعطائها للشخص**' );if( message.mentions.members.first() ){
+            message.mentions.members.first().addRole( role1 );
+            return message.reply('**:white_check_mark: [ '+role1.name+' ] رتبة [ '+args[0]+' ] تم اعطاء **');
+        }
+        if( args[0].toLowerCase() == "all" ){
+            message.guild.members.forEach(m=>m.addRole( role1 ))
+            return  message.reply('**:white_check_mark: [ '+role1.name+' ] تم اعطاء الكل رتبة**');
+        } else if( args[0].toLowerCase() == "bots" ){
+            message.guild.members.filter(m=>m.user.bot).forEach(m=>m.addRole(role1))
+            return  message.reply('**:white_check_mark: [ '+role1.name+' ] تم اعطاء البوتات رتبة**');
+        } else if( args[0].toLowerCase() == "humans" ){
+            message.guild.members.filter(m=>!m.user.bot).forEach(m=>m.addRole(role1))
+            return  message.reply('**:white_check_mark: [ '+role1.name+' ] تم اعطاء البشريين رتبة**');
+        }
+    }
+});
+
+client.on('message', message => {
+    if (message.content.includes('discord.gg')){
+                        if(!message.channel.guild) return message.reply ('')
+                    if (!message.member.hasPermissions(['MANAGE_MESSAGES'])){
+       message.channel.send('kick <@' + message.author.id + '>')
+       message.delete() 
+       } /////////////// Galal , ALPHA CODES
+    } /////////////// Galal , ALPHA CODES
+          if (message.content.startsWith("kick")) {
+             if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply();
+             var member= message.mentions.members.first();
+             member.kick().then((member) => {
+                 message.channel.sendMessage("", {embed: {
+                 author: {  /////////////// Galal , ALPHA CODES
+                 },  /////////////// Galal , ALPHA CODES
+                 title: 'بسبب النشر ' + member.displayName + ' تم حظر', 
+                 color: 490101,
+                 }
+               });
+           }  /////////////// Galal , ALPHA CODES
+         ) 
+       }  /////////////// Galal , ALPHA CODES
+   });  /////////////// Galal , ALPHA CODES
+
+client.on('message', message => {
+    if(message.content.startsWith('!quran')) {
+		message.delete();
+    const voiceChannel = message.member.voiceChannel;
+    if (!voiceChannel) return message.reply(`**You Must be in Voice Channel**`);
+
+	let embed = new Discord.RichEmbed()
+    .setAuthor(`${message.author.tag}`, message.author.avatarURL)
+	.setColor('#000000')
+	.setFooter("Quran Command", 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiqVT5PZAfcy8qZxlr3SQv3mmCw9zPiu2YBLIQ4bBePL2jLm7h')
+      .setDescription(` 
+     🕋 Quran Commands 🕋
+	 
+🇦 القرآن كاملاً ماهر المعيقلي
+🇧 سورة البقرة كاملة للشيخ مشاري العفاسي
+🇨 سورة الكهف كاملة بصوت ماهر المعيلقي
+⏹ لإيقاف القرآن الكريم
+🇩 القرآن كاملاً عبدالباسط عبدالصمد
+🇪 القرآن كاملاً ياسر الدوسري
+🇫 سورة الواقعه بصوت الشيخ مشاري بن راشد العفاسي`)
+	
+	message.channel.sendEmbed(embed).then(msg => {
+			msg.react('🇦')
+		.then(() => msg.react('🇧'))
+		.then(() => msg.react('🇨'))
+		.then(() => msg.react('⏹'))
+		.then(() => msg.react('🇩'))
+		.then(() => msg.react('🇪'))
+		.then(() => msg.react('🇫'))
+
+// Filters		
+	let filter1 = (reaction, user) => reaction.emoji.name === '🇦' && user.id === message.author.id;
+	let filter2 = (reaction, user) => reaction.emoji.name === '🇧' && user.id === message.author.id;
+	let filter3 = (reaction, user) => reaction.emoji.name === '🇨' && user.id === message.author.id;
+	let filter4 = (reaction, user) => reaction.emoji.name === '⏹' && user.id === message.author.id;
+	let filter5 = (reaction, user) => reaction.emoji.name === '🇩' && user.id === message.author.id;
+	let filter6 = (reaction, user) => reaction.emoji.name === '🇪' && user.id === message.author.id;
+	let filter7 = (reaction, user) => reaction.emoji.name === '🇫' && user.id === message.author.id;
+
+// Collectors
+	let collector1 = msg.createReactionCollector(filter1, { time: 120000 });
+	let collector2 = msg.createReactionCollector(filter2, { time: 120000 });
+	let collector3 = msg.createReactionCollector(filter3, { time: 120000 });
+	let collector4 = msg.createReactionCollector(filter4, { time: 120000 });
+	let collector5 = msg.createReactionCollector(filter5, { time: 120000 });
+	let collector6 = msg.createReactionCollector(filter6, { time: 120000 });
+	let collector7 = msg.createReactionCollector(filter7, { time: 120000 });
+	
+// Events
+collector1.on('collect', r => {
+    voiceChannel.join()
+      .then(connnection => {
+        const stream = ytdl("https://www.youtube.com/watch?v=Ktync4j_nmA", { filter: 'audioonly' });
+        const dispatcher = connnection.playStream(stream);
+        dispatcher.on('end', () => voiceChannel.leave());
+		collector1.stop();
+		collector2.stop();
+		collector3.stop();
+		collector4.stop();
+		collector5.stop();
+		collector6.stop();
+		collector7.stop();
+		embed.setDescription(`<@${message.author.id}> **Quran is Now On**`);
+		msg.edit(embed).then(msg.delete(5000));
+   });
+});
+collector2.on('collect', r => {
+    voiceChannel.join()
+      .then(connnection => {
+        const stream = ytdl("https://www.youtube.com/watch?v=ZWV2kuxQHtw", { filter: 'audioonly' });
+        const dispatcher = connnection.playStream(stream);
+        dispatcher.on('end', () => voiceChannel.leave());
+		collector1.stop();
+		collector2.stop();
+		collector3.stop();
+		collector4.stop();
+		collector5.stop();
+		collector6.stop();
+		collector7.stop();
+		embed.setDescription(`<@${message.author.id}> **Quran is Now On**`); //Hi
+		msg.edit(embed).then(msg.delete(5000));
+      });
+});
+collector3.on('collect', r => {
+    voiceChannel.join()
+      .then(connnection => {
+        const stream = ytdl("https://www.youtube.com/watch?v=4mzp4j-XDUw", { filter: 'audioonly' });
+        const dispatcher = connnection.playStream(stream);
+        dispatcher.on('end', () => voiceChannel.leave());
+		collector1.stop();
+		collector2.stop();
+		collector3.stop();
+		collector4.stop();
+		collector5.stop();
+		collector6.stop();
+		collector7.stop();
+		embed.setDescription(`<@${message.author.id}> **Quran is Now On**`);
+		msg.edit(embed).then(msg.delete(5000));
+      });
+});
+collector4.on('collect', r => {
+	if (message.guild.voiceConnection) message.guild.voiceConnection.disconnect();
+		collector1.stop();
+		collector2.stop();
+		collector3.stop();
+		collector4.stop();
+		collector5.stop();
+		collector6.stop();
+		collector7.stop();
+		embed.setDescription(`<@${message.author.id}> **Quran is Now Off**`);
+		msg.edit(embed).then(msg.delete(5000));
+});
+collector5.on('collect', r => {
+    voiceChannel.join()
+      .then(connnection => {
+        const stream = ytdl("https://www.youtube.com/watch?v=vqXLGtZcUm8", { filter: 'audioonly' });
+        const dispatcher = connnection.playStream(stream);
+        dispatcher.on('end', () => voiceChannel.leave());
+		collector1.stop();
+		collector2.stop();
+		collector3.stop();
+		collector4.stop();
+		collector5.stop();
+		collector6.stop();
+		collector7.stop();
+		embed.setDescription(`<@${message.author.id}> **Quran is Now On**`);
+		msg.edit(embed).then(msg.delete(5000));
+      });
+});
+collector6.on('collect', r => {
+    voiceChannel.join()
+      .then(connnection => {
+        const stream = ytdl("https://www.youtube.com/watch?v=WYT0pQne-7w", { filter: 'audioonly' });
+        const dispatcher = connnection.playStream(stream);
+        dispatcher.on('end', () => voiceChannel.leave());
+		collector1.stop();
+		collector2.stop();
+		collector3.stop();
+		collector4.stop();
+		collector5.stop();
+		collector6.stop();
+		collector7.stop();
+		embed.setDescription(`<@${message.author.id}> **Quran is Now On**`);
+		msg.edit(embed).then(msg.delete(5000));
+      });
+});
+collector7.on('collect', r => {
+    voiceChannel.join()
+      .then(connnection => {
+        const stream = ytdl("https://www.youtube.com/watch?v=LTRcg-gR78o", { filter: 'audioonly' });
+        const dispatcher = connnection.playStream(stream);
+        dispatcher.on('end', () => voiceChannel.leave());
+		collector1.stop();
+		collector2.stop();
+		collector3.stop();
+		collector4.stop();
+		collector5.stop();
+		collector6.stop();
+		collector7.stop();
+		embed.setDescription(`<@${message.author.id}> **Quran is Now On**`);
+		msg.edit(embed).then(msg.delete(5000));
+      });
+});
+})
+}
+});
+
 
 client.login(process.env.TOKEN);
