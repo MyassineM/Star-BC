@@ -966,7 +966,7 @@ client.on("guildMemberAdd", member => {
 
 client.on('message',function(message) {
   if(!message.channel.guild) return undefined;
-  const swearWords = ["fuck","fuck off","كسمك","نيك امك","يا ابن القحبه","زبي","يا الن شرموطه","يلعن ابوك"];
+  const swearWords = ["fuck","fuck off","كسمك","نيك امك","يا ابن القحبه","زبي","يا ابن شرموطه","يلعن ابوك"];
   if (swearWords.some(word => message.content.includes(word)) ) {
     message.delete()
     message.reply("ممنوع السب"); 
@@ -978,7 +978,7 @@ client.on("message", message => {
   if(message.content.startsWith(prefix + "vkick")) {
     try {
     if(!men) {
-      message.channel.send("**الرجاء اخيار شخص لطرده !**");
+      message.channel.send("**الرجاء اختيار شخص لطرده !**");
       return;
     }
     if(!message.guild.member(men).voiceChannel) return message.channel.send("المراد طرده ليس في الغرف الصوتيه!");
@@ -1031,23 +1031,6 @@ footer: {
 
 });
 
-client.on('message', message => {//new msg event
-if(!message.channel.guild) return;
-  if(message.content.startsWith(prefix + 'set')) {//to create the rainbow role
-	  let role = message.guild.roles.find('name', 'Rainbow bot.')
-    if(role) return message.channel.send(`This Step Already Completed !`)//if the role already created return with this msg
-  //start of create role 
-  if(!role){
-    rainbow =  message.guild.createRole({
-   name: "Rainbow bot.",//the role will create name
-   color: "#000000",//the default color
-   permissions:[]//the permissions
- //end of create role
-})
-
-}
-message.channel.send('Done The Rainbow Role Setup Has Been Completed')//if the step completed
-}})
 
 client.on('ready', () => {//new ready event
   setInterval(function(){
@@ -1239,7 +1222,8 @@ client.on('message', message => { //ping
                         .setTimestamp()
         message.channel.send({embed:embed});
                         }
-                    });
+                    
+});
 
 client.on('message', message => {
     var prefix = "!"
