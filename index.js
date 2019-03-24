@@ -274,42 +274,9 @@ client.on('message', msg => {
 });
 
 client.on('guildMemberAdd', member=> {
-    member.addRole(member.guild.roles.find("name","Saturn"));
+    member.addRole(member.guild.roles.find("name","Saturn,,"));
     });
 
-client.on('message', message => {
-  var prefix = "!"
-          if(message.content.startsWith(prefix + 'skin')) {
-              let args = message.content.split(' ').slice(1).join(' ');
-              if (!args) return message.channel.send("**من فضلك ضع إسمك**");
-              var link = (`https://minotar.net/body/${args}/100.png`);
-              message.channel.send(link);
-          }
-      });
-
-client.on("message", async (message) => {
-    if (!prefix) {
-        var prefix = "!";
-    }
-    var args = message.content.slice(prefix.length).split(" ");
-    var cmd = args[0];
-    switch(cmd) {
-        case "timer":
-        if (!args[1]) {
-            message.reply(`من فضلك أكتب الوقت .. مثال : ${prefix}timer 5`);
-            return undefined;
-        }
-        if (isNaN(args[1])) {
-            message.reply(`هذا ليس رقم صالح`);
-            return undefined;
-        }
-        function endTimer() {
-            message.channel.send("إنتهى الوقت" + args[1]);
-        }
-        setInterval(endTimer, parseInt(args[1])*1000);
-        break;
-    }
-});
 
 client.on("message", message => {
     var prefix = "!";
@@ -332,6 +299,62 @@ client.on("message", message => {
                                 message.channel.sendEmbed(x5bz2);
                             }
                           }
+});
+
+client.on("message", (message) => {
+
+   if (message.content.startsWith("!new")) {   
+        const reason = message.content.split(" ").slice(1).join(" ");  
+        if (!message.guild.roles.exists("name", "Support Team")) return message.channel.send(`لازم تسوي رتبة اسمها \`Support Team\` وتنطي البوت ادمنيتر حتا يقدر يسوي الرومات ويعدل برمشنات`);
+        if (message.guild.channels.exists("name", "ticket-{message.author.id}" + message.author.id)) return message.channel.send(`You already have a ticket open.`);    /// ALPHA CODES
+        message.guild.createChannel(`ticket-${message.author.username}`, "text").then(c => {
+            let role = message.guild.roles.find("name", "Support Team");
+            let role2 = message.guild.roles.find("name", "@everyone");
+            c.overwritePermissions(role, {
+                SEND_MESSAGES: true,
+                READ_MESSAGES: true
+            });   
+            c.overwritePermissions(role2, {
+                SEND_MESSAGES: false,
+                READ_MESSAGES: false
+            });
+            c.overwritePermissions(message.author, {
+                SEND_MESSAGES: true,
+                READ_MESSAGES: true
+            });
+            message.channel.send(`:white_check_mark: تم انشاء تذكرتك, #${c.name}.`);
+            const embed = new Discord.RichEmbed()
+                .setColor(0xCF40FA)
+                .addField(`Hey ${message.author.username}!`, `:white_check_mark:  تم انشاء تذكرتك, #ticket`)
+                .setTimestamp();
+            c.send({
+                embed: embed
+            });
+        }).catch(console.error);
+    }
+ 
+ 
+  if (message.content.startsWith("!close")) {
+        if (!message.channel.name.startsWith(`ticket-`)) return message.channel.send(`You can't use the close command outside of a ticket channel.`);
+ 
+       message.channel.send(`هل انت متأكد من اقفالك للتذكرة اذا متأكد اكتب.confirm`)
+           .then((m) => {
+               message.channel.awaitMessages(response => response.content === '.confirm', {
+                       max: 1,
+                       time: 10000,
+                       errors: ['time'],
+                   })  
+                   .then((collected) => {
+                       message.channel.delete();
+                   })   
+                   .catch(() => {
+                       m.edit('Ticket close timed out, the ticket was not closed.').then(m2 => {
+                           m2.delete();
+                       }, 3000);
+                   });
+           });
+   }
+ 
 });
 
 client.login(process.env.TOKEN);
