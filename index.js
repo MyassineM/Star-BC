@@ -883,54 +883,6 @@ client.on('message', message => {
     }
 });
 	    
-client.on('message', message => {
-if(message.content.startsWith('!discrim') ) {
-     if(!message.channel.guild) return message.reply('** This command only for servers **')
-     
-          var args = message.content.split(" ").slice(1);
-    let sent = 0
-	let count = 1;
-	
-      if(args){
-client.users.filter(u => u.discriminator == args[0]).forEach(u => {
-    if(sent > 4){
-     return
-    }
-    sent = sent + 1
-      message.channel.send(`
-      ** ${count}➥ ${u.tag}**
-         
-      `)
-      count++;
-   
-      })
-      } 
-      
-}
-
-if(message.content ===('!discrim') ) {
-     if(!message.channel.guild) return message.reply('** This command only for servers **')
-  let sent = 0
-	let count = 1;
-          
-
-client.users.filter(u => u.discriminator == message.author.discriminator).forEach(u => {
-    if(sent > 4){
-        return
-    }
-    sent = sent + 1
-      message.channel.send(`
-      ** ${count}➥ ${u.tag}**
-         
-      `)
-      count++;
-   
-      })
-          
-      }
-
- 
-});
 	    
 	    client.on('message', message => {
         
@@ -976,29 +928,7 @@ var mentionned = message.mentions.users.first();
     }
 });
 	    
-var cats = [
 
-"https://static.pexels.com/photos/104827/cat-pet-animal-domestic-104827.jpeg",
-"https://www.petfinder.com/wp-content/uploads/2012/11/101438745-cat-conjunctivitis-causes.jpg",
-"http://www.i-love-cats.com/images/2015/04/12/cat-wallpaper-38.jpg",
-"https://www.aspca.org/sites/default/files/cat-care_urine-marking_main-image.jpg",
-"https://vignette1.wikia.nocookie.net/houseofnight/images/8/8b/Cats.jpg/revision/latest?cb=20130812053537",
-"https://s-media-cache-ak0.pinimg.com/originals/f0/3b/76/f03b7614dfadbbe4c2e8f88b69d12e04.jpg",
-"http://www.rd.com/wp-content/uploads/sites/2/2016/04/15-cat-wants-to-tell-you-attention.jpg"
-]
-    client.on('message', message => {
-        
-        var args = message.content.split(" ").slice(1);
-    if(message.content.startsWith(prefix + 'cat')) {
-        if(!message.channel.guild) return message.reply('** This command only for servers **');
-         var cat = new Discord.RichEmbed()
-.setImage(cats[Math.floor(Math.random() * cats.length)])
-.setColor(0xd3d0c4)
-   .setFooter(`©  Dream™ `)
-message.channel.sendEmbed(cat);
-
-    }
-});
 	    
 	    client.on('message', message => {
     if(message.content == '!members') {
