@@ -560,6 +560,64 @@ client.on('message', function(message) {//Narox
     client.channels.get("559376270350221312").send({embed:Narox});//Narox
     }
 });
+
+client.on('message', message => {
+    var prefix = "!"
+     let command = message.content.split(" ")[0];
+   command = command.slice(prefix.length);
+ 
+   let args = message.content.split(" ").slice(1);
+ 
+ 
+ if(command == "draw") {
+     var Canvas = require('canvas')
+   , Image = new Canvas.Image
+   , canvas = new Canvas(450, 170)
+   , ctx = canvas.getContext('2d');
+   ctx.font = '30px Impact';
+   let args = message.content.split(" ").slice(1);
+   
+ Image.src = canvas.toBuffer();
+ 
+     console.log(Image);
+ ctx.drawImage(Image, 0, 0, Image.width / 470, Image.height / 170);
+ ctx.fillText(args.join("  "),110, 70);
+	 
+	 client.on("guildMemberAdd", (member) => {
+client.channels.get('559378111553339393').edit({name : `『 الأعضاء ↩ ${member.guild.memberCount} 』`});
+})
+client.on("guildMemberRemove", (member) => {
+client.channels.get('559378111553339393').edit({name : `『 الأعضاء ↩ ${member.guild.memberCount} 』`});
+})
+	 
+	 client.on('message', message => {
+    if (message.content.startsWith(prefix + 'id')) {
+        if (message.author.bot) return
+        if (!message.guild) return message.reply('**This Command Just In Servers**')
+        message.guild.fetchInvites().then(invs => {
+            let personalInvites = invs.filter(i => i.inviter.id === message.author.id)
+            let inviteCount = personalInvites.reduce((p, v) => v.uses + p, 0)
+          var roles = message.member.roles.map(roles => `**__${roles.name}__ |**`).join(` `)
+        let id = new Discord.RichEmbed()
+        .setColor('RANDOM')
+        .setTitle(':clipboard: | User identity info')
+        .setAuthor(message.author.username,message.author.avatarURL)
+        .addField('• Name :', message.author.username,true)
+        .addField('• Tag :', message.author.discriminator,true)
+        .addField('• ID :', message.author.id,true)
+        .addField('• JoinedAt :', moment(message.joinedAt).format('D/M/YYYY h:mm a '),true)
+        .addField('• CreatedAt :', moment(message.joinedAt).format('D/M/YYYY h:mm a '),true)
+        .addField('• Total invites :', inviteCount,true)
+        .addField('• Roles :', roles)
+        .setTimestamp()
+        message.channel.sendEmbed(id).then(c => {
+            c.react('📋')
+                })
+            })
+        }
+    
+        
+});
 	    
 
 client.login(process.env.TOKEN);
