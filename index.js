@@ -548,16 +548,16 @@ client.on('message', message => {
       });
 
 client.on('message' , message => {
-      var prefix = "-";
+      var prefix = "!";
       if(message.author.bot) return;
      
-      if(message.content.startsWith(prefix + "bcrole")) {
+      if(message.content.startsWith(prefix + "bcr")) {
         if (!message.member.hasPermission("ADMINISTRATOR"))  return;
         let args = message.content.split(" ").slice(2);
      var codes = args.join(' ')
        
         if(!codes) {
-          message.channel.send("قم بكتابة الرسالة | `$rolebc role message`")
+          message.channel.send("قم بكتابة الرسالة | `!bcr role message`")
             return;
         }
      
