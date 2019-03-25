@@ -616,7 +616,7 @@ client.user.setActivity(argresult, {type:'WATCHING'});
 } else 
 if (message.content.startsWith(prefix + 'l')) {
 client.user.setActivity(argresult, {type:'LISTENING'});
-    message.channel.sendMessage(`**:white_check_mark:  : ${argresult}**`)
+    message.channel.sendMessage(`**:white_check_mark: : ${argresult}**`)
 } else 
 
 if (message.content.startsWith(prefix + 's')) {
@@ -624,6 +624,56 @@ if (message.content.startsWith(prefix + 's')) {
     message.channel.sendMessage(`**:white_check_mark:  : ${argresult}**`)
 }
 
+});
+
+client.on("message", msg => {
+ if(!msg.guild.member(msg.author).hasPermission("MANAGE_ROLES")) return msg.reply("انت لا تملك صلاحيات !! ").then(msgS => msgS.delete(5000));
+              if(!msg.guild.member(client.user).hasPermission("MANAGE_Roles")) return msg.reply("البوت لايملك صلاحيات ").then(msgS => msgS.delete(5000));;
+var prefix = '!';//البرفكس
+if(msg.content.startsWith(prefix + "droles")){
+msg.delete();
+var roles = msg.guild.roles.forEach(m =>{
+m.delete();
+})
+msg.reply("تم بنجاح").then(p => {
+p.edit("✅")
+p.delete(1700);
+})
+}
+});
+
+client.on('guildCreate', guild => {
+   
+  client.users.get("436918120184021012")
+    const Dark&Narox = new Discord.RichEmbed()
+    .setAuthor(`بوتك دخل سيرفر جديد مبروك ✅`)
+    .setDescription(`**
+  Server name: __${guild.name}__
+  Server id: __${guild.id}__
+  Server owner: __${guild.owner}__
+  Member Count: __${guild.memberCount}__
+  Servers Counter : __${client.guilds.size}__**`)
+          .setColor('#36393e')
+          .setFooter('Narox' , client.user.avatarURL)
+         client.users.get("436918120184021012").send({Dark&Narox});
+})
+ 
+client.on('guildDelete', guild => {
+   
+  client.users.get("436918120184021012")
+
+  const Dark&Narox = new Discord.RichEmbed()
+  .setAuthor(`Narox Bot. left a server ❎`)
+  .setDescription(`**
+ Server name: __${guild.name}__
+ Server id: __${guild.id}__
+ Server owner: __${guild.owner}__
+ Members Count: __${guild.memberCount}__
+ Servers Counter : __${client.guilds.size}__**`)
+         .setColor('#36393e')
+         .setFooter('Narox' , client.user.avatarURL)
+         client.users.get("436918120184021012").send({Dark&Narox});
+ 
 });
 
 client.login(process.env.TOKEN);
