@@ -203,7 +203,7 @@ client.on("message", message => {
             if (message.content.startsWith(prefix + "clear")) {
  if (!args[1]) {
                                 let x5bz1 = new Discord.RichEmbed()
-                                .setDescription("#clear <number>")
+                                .setDescription("!clear <number>")
                                 .setColor("#0000FF")
                                 message.channel.sendEmbed(x5bz1);
                             } else {
@@ -668,39 +668,10 @@ if(message.content.startsWith("!slots")) {
 }
 });
 
-client.on('message', message => {
-    if (message.content.startsWith(prefix + 'id')) {
-        if (message.author.bot) return
-        if (!message.guild) return message.reply('**This Command Just In Servers**')
-        message.guild.fetchInvites().then(invs => {
-            let personalInvites = invs.filter(i => i.inviter.id === message.author.id)
-            let inviteCount = personalInvites.reduce((p, v) => v.uses + p, 0)
-          var roles = message.member.roles.map(roles => `**__${roles.name}__ |**`).join(` `)
-        let id = new Discord.RichEmbed()
-        .setColor('RANDOM')
-        .setTitle(':clipboard: | User identity info')
-        .setAuthor(message.author.username,message.author.avatarURL)
-        .addField('• Name :', message.author.username,true)
-        .addField('• Tag :', message.author.discriminator,true)
-        .addField('• ID :', message.author.id,true)
-        .addField('• JoinedAt :', moment(message.joinedAt).format('D/M/YYYY h:mm a '),true)
-        .addField('• CreatedAt :', moment(message.joinedAt).format('D/M/YYYY h:mm a '),true)
-        .addField('• Total invites :', inviteCount,true)
-        .addField('• Roles :', roles)
-        .setTimestamp()
-        message.channel.sendEmbed(id).then(c => {
-            c.react('📋')
-                })
-            })
-        }
-    
-        
-});
-
 client.on("message", message => {
 var prefix = "!" // البريفكس
     var args = message.content.substring(prefix.length).split(" ");
-    if (message.content.startsWith(prefix + "مسح")) { // الامر
+    if (message.content.startsWith(prefix + "clear")) { // الامر
         if(!message.channel.guild) return message.reply('**❌ اسف لكن هذا الامر للسيرفرات فقط **');         
 if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('**⚠  لا يوجد لديك صلاحية لمسح الشات**');
 var msg;
@@ -708,7 +679,7 @@ msg = parseInt();
 
 message.channel.fetchMessages({limit: msg}).then(messages => message.channel.bulkDelete(messages)).catch(console.error);
 message.channel.sendMessage("", {embed: {
-title: "``تــم مسح الشات ``",
+title: "``تم مسح 100 كلمة ``",
 color: 0x06DF00,
 footer: {
   
@@ -717,6 +688,37 @@ footer: {
                   }
 
 
+});
+
+client.on('message', message => { 
+var prefix = "" // برفكس حقك هني
+           if (message.content.startsWith(prefix + "id")) {
+     var args = message.content.split(" ").slice(1);
+     let user = message.mentions.users.first();
+     var men = message.mentions.users.first();
+        var heg;
+        if(men) {
+            heg = men
+        } else {
+            heg = message.author
+        }
+      var mentionned = message.mentions.members.first();
+         var h;
+        if(mentionned) {
+            h = mentionned
+        } else {
+            h = message.member
+        }
+               moment.locale('ar-TN');
+      var id = new  Discord.RichEmbed()
+      .setAuthor(message.author.username, message.author.avatarURL) 
+    .setColor("#707070")
+    .addField(': دخولك لديسكورد قبل', `${moment(heg.createdTimestamp).format('YYYY/M/D HH:mm:ss')} **\n** \`${moment(heg.createdTimestamp).fromNow()}\`` ,true) 
+    .addField(': انضمامك لسيرفر قبل', `${moment(h.joinedAt).format('YYYY/M/D HH:mm:ss')} \n \`${moment(h.joinedAt).fromNow()}\``, true)               
+    .setFooter(`${clinet.username}`, 'https://images-ext-2.discordapp.net/external/JpyzxW2wMRG2874gSTdNTpC_q9AHl8x8V4SMmtRtlVk/https/orcid.org/sites/default/files/files/ID_symbol_B-W_128x128.gif')                                 
+    .setThumbnail(heg.avatarURL);
+    message.channel.send(id)
+}       
 });
 
 
