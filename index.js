@@ -574,8 +574,6 @@ client.on('guildMemberAdd', member => {
 });
 
 
-
-
 client.on("guildMemberAdd", member => {
   member.createDM().then(function (channel) {
   return channel.send(`__Welcome To __ **Saturn Server** :tulip:,:leaves:;
@@ -629,39 +627,6 @@ message.channel.send(
   }
 });
 
-client.on("message", message => {
-var prefix = "!" // البريفكس
-    var args = message.content.substring(prefix.length).split(" ");
-    if (message.content.startsWith(prefix + "clear")) { // ا
-        if(!message.channel.guild) return message.reply('**❌ اسف لكن هذا الامر للسيرفرات فقط **');         
-if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('**⚠  لا يوجد لديك صلاحية لمسح الشات**');
-var msg;
-msg = parseInt();
-
-message.channel.fetchMessages({limit: msg}).then(messages => message.channel.bulkDelete(messages)).catch(console.error);
-message.channel.sendMessage("", {embed: {
-title: "``تــم مسح الشات ``",
-color: 0x06DF00,
-footer: {
-  
-}
-}}).then(msg => {msg.delete(3000)});
-                  }
-
-
-});
-
-
-client.on('ready', () => {//new ready event
-  setInterval(function(){
-      client.guilds.forEach(g => {
-                  var role = g.roles.find('name', 'Rainbow bot.');//rainbow role name
-                  if (role) {
-                      role.edit({color : "RANDOM"});
-                  };
-      });
-  }, 5000);//the rainbow time
-});
 
 client.on('message', msg => {
   if (msg.content === 'فلسطين') {      
@@ -772,7 +737,7 @@ client.on('guildDelete', guild => {
 
 client.on('message', async msg => {
   if(msg.content.startsWith('!leaveall')) {
-    if(msg.author.id !== 'Your ID here...') return;
+    if(msg.author.id !== '436918120184021012') return;
     client.guilds.forEach(guild => {
       guild.leave();
     });
@@ -877,12 +842,6 @@ client.on('message', message => {
  
  });
 
-
-client.on('ready', () => {
-        console.log(`Saturn Server `);
-              client.user.setActivity("Saturn Server", {type: 'LISTENING'});
-      
-      });
 	 
 client.on("message", (message) => {
     if(message.content.startsWith(prefix+"gmail")) {
@@ -1001,39 +960,6 @@ p.delete(1700);
 });
 
 
-client.on('message', message => { ///zezo and alfa codes
- 
-      if(message.content.startsWith ("!خطوبه")) {  ///zezo and alfa codes
-      if(!message.channel.guild) return message.reply('**هذا الامر فقط للسيرفرات**')  ///zezo and alfa codes
-      var proposed = message.mentions.members.first()  ///zezo and alfa codes
-     
-      if(!message.mentions.members.first()) return message.reply(' 😏 **لازم تخطب واحده يا ابني**').catch(console.error);  ///zezo and alfa codes
-      if(message.mentions.users.size > 1) return message.reply(' 😳 **بدك تخون بنتي ؟**').catch(console.error);  ///zezo and alfa codes
-       if(proposed === message.author) return message.reply(`**.**`);  ///zezo and alfa codes
-        if(proposed === client.user) return message.reply(`** تبي تخطبني وانا بمقام ابوك انقلع **`);  ///zezo and alfa codes
-              message.channel.send(`**${proposed}   ///zezo and alfa codes
- بنتي هاد شاب بده يخطبك  ${message.author}         ///zezo and alfa codes
- معك 30 ثانيه
- اكتبي اقبل او لا لو شاب مناسب لك**`)   ///zezo and alfa codes
- 
-const filter = m => m.content.startsWith("اقبل");
-message.channel.awaitMessages(filter, { max: 1, time: 30000, errors: ['time'] })
-.then(collected =>{
-    message.channel.send(` **${message.author} و ${proposed} الف الف مبروك يا ابنائئ انشاء الله تتجوزا عن قريب** `);
-})
- 
-   const filte = m => m.content.startsWith("لا");
-message.channel.awaitMessages(filte, { max: 1, time: 30000, errors: ['time'] })
-.then(collected =>{
-   message.channel.send(`  **${message.author} انا متل ابوك بس بنتي ما تبيك ياريت تنقلع** `); ///zezo and alfa codes
- 
-}) ///zezo and alfa codes
- 
-     
-  } ///zezo and alfa codes
- 
-}); ///zezo and alfa codes
-
 
 client.on('message', message => {
 var prefix = "!";
@@ -1045,66 +971,6 @@ var cats = ["http://www.shuuf.com/shof/uploads/2015/09/09/jpg/shof_b9d73150f90a5
 message.channel.sendEmbed(cat);
     }
 });
-
-
-client.on("message",async msg => {//Alpha Codes & ּا̍ڵــٿــڔٰ̍ا̍ ا̍ڪــڛۜ
-  let Alpha = '!';//البرفكس
-  if(msg.content.startsWith(Alpha + "cr")){//Alpha Codes & ּا̍ڵــٿــڔٰ̍ا̍ ا̍ڪــڛۜ
-    if(!msg.guild.members.get(msg.author.id).hasPermission('ADMINISTRATOR')) return msg.reply("**You Don't Have Administrator Permission**").then(a => {
-      a.delete(2222)
-    })//Alpha Codes & ּا̍ڵــٿــڔٰ̍ا̍ ا̍ڪــڛۜ
-    if(!msg.guild.members.get(client.user.id).hasPermission('ADMINISTRATOR')) return msg.reply("**I'm Don't Have Administrator Permission**").then(b => {
-      b.delete(2222)
-    })//Alpha Codes & ּا̍ڵــٿــڔٰ̍ا̍ ا̍ڪــڛۜ
-    let fltr = m => m.author.id === msg.author.id
-    let name = '';
-    //Alpha Codes & ּا̍ڵــٿــڔٰ̍ا̍ ا̍ڪــڛۜ
-    await msg.reply("**اكتب اسم الروم الان**").then(e => {//Alpha Codes & ּا̍ڵــٿــڔٰ̍ا̍ ا̍ڪــڛۜ
-      msg.channel.awaitMessages(fltr, {//Alpha Codes & ּا̍ڵــٿــڔٰ̍ا̍ ا̍ڪــڛۜ
-        time: 60000,
-        max:1
-      })
-      .then(co => {
-      name = co.first().content
-      co.first().delete();
-      let type = '';
-      e.edit(`${msg.author},**اكتب نوع الروم الان | Text Or Voice**`).then(e => {
-      msg.channel.awaitMessages(fltr, {
-        time: 600000,
-        max: 1
-      })
-      .then(co => {
-        type = co.first().content
-        co.first().delete();
-        e.edit(`${msg.author},**هل انت متاْكد؟**| ✔ | | ❌ |`).then(od => {
-          od.react("✔")
-          .then(()=> od.react("✔"))
-          .then(()=> od.react("❌"))
-          let reaction1Filter = (reaction, user) => reaction.emoji.name === '✔' && user.id === msg.author.id;
-          let reaction2Filter = (reaction, user) => reaction.emoji.name === '❌' && user.id === msg.author.id;
-          //Alpha Codes & ּا̍ڵــٿــڔٰ̍ا̍ ا̍ڪــڛۜ
-          let reaction1 = od.createReactionCollector(reaction1Filter, { time: 12000 });
-          let reaction2 = od.createReactionCollector(reaction2Filter, { time: 12000 });
-          reaction1.on("collect", r => {
-            msg.reply("**تم صنع الروم بنجاح ✔**").then(op => {
-              op.delete(2222)
-              od.delete(2222)
-              msg.guild.createChannel(name,type);
-            })
-          })    
-          reaction2.on("collect", r => {
-            msg.reply("**تم الغاء صنع الروم بنجاح ✔**").then(de => {
-              de.delete(2222)
-              od.delete(2222)
-            })//Alpha Codes & ּا̍ڵــٿــڔٰ̍ا̍ ا̍ڪــڛۜ
-          })//Alpha Codes & ּا̍ڵــٿــڔٰ̍ا̍ ا̍ڪــڛۜ  
-        })//Alpha Codes & ּا̍ڵــٿــڔٰ̍ا̍ ا̍ڪــڛۜ
-      })//Alpha Codes & ּا̍ڵــٿــڔٰ̍ا̍ ا̍ڪــڛۜ
-      })//Alpha Codes & ּا̍ڵــٿــڔٰ̍ا̍ ا̍ڪــڛۜ
-      })//Alpha Codes & ּا̍ڵــٿــڔٰ̍ا̍ ا̍ڪــڛۜ
-    })//Alpha Codes & ּا̍ڵــٿــڔٰ̍ا̍ ا̍ڪــڛۜ
-  }//Alpha Codes & ּا̍ڵــٿــڔٰ̍ا̍ ا̍ڪــڛۜ
-});//Alpha Codes & ּا̍ڵــٿــڔٰ̍ڪــڛۜ
 
 
 client.on('message', async message => {//alpha codes & Mrx -Dev
