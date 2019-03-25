@@ -538,7 +538,7 @@ client.on('message', msg => {
 });
 
 client.on('message', message => {
-  var prefix = "§"
+  var prefix = "!"
           if(message.content.startsWith(prefix + 'skin')) {
               let args = message.content.split(' ').slice(1).join(' ');
               if (!args) return message.channel.send("**من فضلك ضع إسمك**");
