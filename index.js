@@ -600,7 +600,7 @@ client.on('message', message => {
 
 client.on('message', message => { ///zezo and alfa codes
  
-      if(message.content.startsWith ("#خطوبه")) {  ///zezo and alfa codes
+      if(message.content.startsWith ("!خطوبه")) {  ///zezo and alfa codes
       if(!message.channel.guild) return message.reply('**هذا الامر فقط للسيرفرات**')  ///zezo and alfa codes
       var proposed = message.mentions.members.first()  ///zezo and alfa codes
      
