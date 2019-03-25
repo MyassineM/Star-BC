@@ -682,5 +682,4 @@ client.on("message", msg => { //Narox Dev
       });
 
 
-
 client.login(process.env.TOKEN);
