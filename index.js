@@ -322,26 +322,6 @@ client.on("message", message => {
         }
     }
 });
-
-client.on('message', message => {
-    if (message.content.includes('discord.gg')){
-                        if(!message.channel.guild) return message.reply ('')
-                    if (!message.member.hasPermissions(['MANAGE_MESSAGES'])){
-       message.channel.send('kick <@' + message.author.id + '>')
-       message.delete() 
-       } /////////////// Galal , ALPHA CODES
-    } /////////////// Galal , ALPHA CODES
-          if (message.content.startsWith("kick")) {
-             if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply();
-             var member= message.mentions.members.first();
-             member.kick().then((member) => {
-                 message.channel.sendMessage("", {embed: {
-                 author: {  /////////////// Galal , ALPHA CODES
-                 },  /////////////// Galal , ALPHA CODES
-                 title: 'بسبب النشر ' + member.displayName + ' تم حظر', 
-                 color: 490101,
-                 }
-               });
 		     
 
 client.on('message', message => {
@@ -423,26 +403,6 @@ client.on('message', message => {
     }
 });
 	    
-
-client.on('message', message => {
-        
-   if(message.content.startsWith(prefix + 'rename')) {
-if(message.member.hasPermission("ADMINISTRATOR")) {
-         let args = message.content.split(' ').slice(2);
-var mentionned = message.mentions.users.first();
-   
-  if(!args){
-    return message.channel.send(":x: " + `**| Please enter a new Nick for ${mentionned}**`);
-  }
-  if (!mentionned)return message.channel.send("**You Have to Mention A member :x:**")
-  message.guild.member(mentionned).setNickname(args.join(" ")).then(user => message.channel.send(`:full_moon_with_face: ${mentionned}'s' **New NickName is **` + `__${args.join(" ")}__` + "!")).catch(console.error);
-} else {
-  return message.reply(":x: " + "| You need to have the \"ADMINISTRATOR\" Permission");
-  }
-
-
-    }
-});
 	    
 	    
 client.on('message', message => {
