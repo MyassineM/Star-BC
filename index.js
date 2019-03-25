@@ -653,19 +653,72 @@ client.on("message", (message) => {
                     });
 
  client.on('message', message => {
-if(message.content.startsWith("$slots")) {
+if(message.content.startsWith("!slots")) {
   let slot1 = ['🍏', '🍇', '🍒', '🍍', '🍅', '🍆', '🍑', '🍓'];
   let slots1 = `${slot1[Math.floor(Math.random() * slot1.length)]}`;
   let slots2 = `${slot1[Math.floor(Math.random() * slot1.length)]}`;
   let slots3 = `${slot1[Math.floor(Math.random() * slot1.length)]}`;
   let we;
   if(slots1 === slots2 && slots2 === slots3) {
-    we = "Win!"
+    we = "**You Win But Saturn Bot Lose The Slot oof!!!**"
   } else {
-    we = "Lose!"
+    we = "**You Lose And Saturn Bot Win The Slot!!** "
   }
   message.channel.send(`${slots1} | ${slots2} | ${slots3} - ${we}`)
 }
 });
+
+client.on('message', message => {
+    if (message.content.startsWith(prefix + 'id')) {
+        if (message.author.bot) return
+        if (!message.guild) return message.reply('**This Command Just In Servers**')
+        message.guild.fetchInvites().then(invs => {
+            let personalInvites = invs.filter(i => i.inviter.id === message.author.id)
+            let inviteCount = personalInvites.reduce((p, v) => v.uses + p, 0)
+          var roles = message.member.roles.map(roles => `**__${roles.name}__ |**`).join(` `)
+        let id = new Discord.RichEmbed()
+        .setColor('RANDOM')
+        .setTitle(':clipboard: | User identity info')
+        .setAuthor(message.author.username,message.author.avatarURL)
+        .addField('• Name :', message.author.username,true)
+        .addField('• Tag :', message.author.discriminator,true)
+        .addField('• ID :', message.author.id,true)
+        .addField('• JoinedAt :', moment(message.joinedAt).format('D/M/YYYY h:mm a '),true)
+        .addField('• CreatedAt :', moment(message.joinedAt).format('D/M/YYYY h:mm a '),true)
+        .addField('• Total invites :', inviteCount,true)
+        .addField('• Roles :', roles)
+        .setTimestamp()
+        message.channel.sendEmbed(id).then(c => {
+            c.react('📋')
+                })
+            })
+        }
+    
+        
+});
+
+client.on("message", message => {
+var prefix = "!" // البريفكس
+    var args = message.content.substring(prefix.length).split(" ");
+    if (message.content.startsWith(prefix + "مسح")) { // الامر
+        if(!message.channel.guild) return message.reply('**❌ اسف لكن هذا الامر للسيرفرات فقط **');         
+if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('**⚠  لا يوجد لديك صلاحية لمسح الشات**');
+var msg;
+msg = parseInt();
+
+message.channel.fetchMessages({limit: msg}).then(messages => message.channel.bulkDelete(messages)).catch(console.error);
+message.channel.sendMessage("", {embed: {
+title: "``تــم مسح الشات ``",
+color: 0x06DF00,
+footer: {
+  
+}
+}}).then(msg => {msg.delete(3000)});
+                  }
+
+
+});
+
+
 
 client.login(process.env.TOKEN);
