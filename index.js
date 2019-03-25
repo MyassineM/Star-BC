@@ -180,57 +180,6 @@ client.on('message', message => {
 }
 });//toxic codes
 
-client.on("message", msg => {//So-92.#0885
-    if(msg.author.bot) return;
-if(msg.channel.type === 'dm') return;
-
-let p = "!";//البرفكس
-let msgarray = msg.content.split(" ");//So-92.#0885
-let cmd = msgarray[0];//So-92.#0885
-let args = msgarray.slice(1);
-
-if(cmd === `${p}ban`){
-    let bUser = msg.guild.member(msg.mentions.users.first() || msg.guild.members.get(args[0]));
-if(!bUser) return msg.channel.send("استخدم: `[ ${p}ban @user <السبب> ] مثال : ${p} @So-92.#0885 نشر`");
-let breason = args.join(" ").slice(22);
-if(!msg.member.hasPermission("BAN_MEMBERS")) return msg.channel.send("ليس لديك الصلاحية الكافية ❌").then(s => {
-s.delete(1600);
-})
- if(!msg.guild.me.hasPermission("BAN_MEMBERS")) return msg.channel.send("انا ليس لدي صلاحية كافية ❌").then(z => {
-z.delete(1600);
-})
-if(bUser.hasPermission("BAN_MEMBERS")) return msg.channel.send("لا يمكنني ان احظر اداري").then(bs => {
-bs.delete(1600);
-})
-//So-92.#0885
-let banembed = new Discord.RichEmbed()
-.setDescription("~ban~")
-.setColor("BLACK")
-.addField("banned User", `${bUser} with ID: ${bUser.id}`)
-.addField("banned By", `<@${msg.author.id}> with ID: ${msg.author.id}`)
-.addField("banned In", msg.channel)
-.addField("Time", msg.createdAt)
-.addField("Reason", breason)
-//So-92.#0885
-let banChannel = msg.guild.channels.find("name","log-bans");
-if(!banChannel) return msg.channel.send(`اكتب ${p}banslog`).then(pb => {
-pb.delete(1600);
-})
-//So-92.#0885
-msg.guild.member(bUser).ban();
-msg.reply("تم بنجاح").then(ps => {
-ps.edit("✅").then(ss => {
-ss.delete(1500)
-})
-})
-banChannel.send(banembed)
-    return;
-}
-
-
-});//So-92.#0885
-
-
 
 client.on('message', msg => {
   if(msg.content === 'هلا')
@@ -246,10 +195,6 @@ client.on('message', msg => {
   if(msg.content === 'سلام')
   msg.reply('سلام حب ❤')
 });
-
-client.on('guildMemberAdd', member=> {
-    member.addRole(member.guild.roles.find("name","Saturn,,"));
-    });
 
 
 client.on("message", message => {
@@ -397,11 +342,7 @@ client.on('message', message => {
                  color: 490101,
                  }
                });
-           }  /////////////// Galal , ALPHA CODES
-         ) 
-       }  /////////////// Galal , ALPHA CODES
-   });  /////////////// Galal , ALPHA CODES
-
+		     
 
 client.on('message', message => {
     if (message.content.startsWith("!avatar")) {
@@ -712,28 +653,6 @@ client.on('message', msg => {
   }
 });
 
-client.on('guildDelete', guild => {
-  let joinedbot = new Discord.RichEmbed()
-  .setColor('RANDOM')
-  .setTitle('✅ | Join Bot')
-  .setDescription(`Server Name: [ ${guild.name} ]
-  Server Owner: [ ${guild.owner} ]
-  Server ID: [ ${guild.id} ]
-  Server Count: [ ${guild.memberCount} ]`)
-  client.channels.get("559376270350221312").sendEmbed(joinedbot);
-});
-
-
-client.on('guildDelete', guild => {
-  let kickedbot = new Discord.RichEmbed()
-  .setColor('RANDOM')
-  .setTitle('❎ | Leave Bot')
-  .setDescription(`Server Name: [ ${guild.name} ]
-  Server Owner: [ ${guild.owner} ]
-  Server ID: [ ${guild.id} ]
-  Server Count: [ ${guild.memberCount} ]`)
-  client.channels.get("559376270350221312").sendEmbed(kickedbot);
-});
 
 client.on('message', async msg => {
   if(msg.content.startsWith('!leaveall')) {
@@ -771,25 +690,6 @@ if(message.content.startsWith("!slots")) {
   message.channel.send(`${slots1} | ${slots2} | ${slots3} - ${we}`)
 }
 });
-
-client.on('message', message => { //ping
-                                if(!message.channel.guild) return;
-                        if (message.content.startsWith(prefix + 'ping')) {
-                            if(!message.channel.guild) return;
-                            var msg = `${Date.now() - message.createdTimestamp}`
-                            var api = `${Math.round(client.ping)}`
-                            if (message.author.bot) return;
-                        let embed = new Discord.RichEmbed()
-                        .setAuthor(message.author.username,message.author.avatarURL)
-                        .setColor('#5016f3')
-                        .addField('**Time Taken:**',msg + " ms :signal_strength: ")
-                        .addField('**WebSocket:**',api + " ms :signal_strength: ")
-                        .setTimestamp()
-        message.channel.send({embed:embed});
-                        }
-                    
-});
-
 
 	 
 client.on("message", (message) => {
@@ -857,40 +757,7 @@ client.on("message", msg => {
     msg.channel.send(embed);
   }
 });
-
-client.on('guildCreate', guild => {
    
-  client.users.get("436918120184021012")
-    const Dark&Narox = new Discord.RichEmbed()
-    .setAuthor(`بوتك دخل سيرفر جديد مبروك ✅`)
-    .setDescription(`**
-  Server name: __${guild.name}__
-  Server id: __${guild.id}__
-  Server owner: __${guild.owner}__
-  Member Count: __${guild.memberCount}__
-  Servers Counter : __${client.guilds.size}__**`)
-          .setColor('#36393e')
-          .setFooter('Narox' , client.user.avatarURL)
-         client.users.get("436918120184021012").send({Dark&Narox});
-});
- 
-client.on('guildDelete', guild => {
-   
-  client.users.get("436918120184021012")
-
-  const Dark&Narox = new Discord.RichEmbed()
-  .setAuthor(`Saturn Bot. left a server ❎`)
-  .setDescription(`**
- Server name: __${guild.name}__
- Server id: __${guild.id}__
- Server owner: __${guild.owner}__
- Members Count: __${guild.memberCount}__
- Servers Counter : __${client.guilds.size}__**`)
-         .setColor('#36393e')
-         .setFooter('Narox' , client.user.avatarURL)
-         client.users.get("436918120184021012").send({Dark&Narox});
- 
-});
 
 client.on("message", msg => {
  if(!msg.guild.member(msg.author).hasPermission("MANAGE_ROLES")) return msg.reply("انت لا تملك صلاحيات !! ").then(msgS => msgS.delete(5000));
