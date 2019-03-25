@@ -475,17 +475,7 @@ client.on('message', function(message) {//Narox
     }
 });
 
-
-client.on('guildMemberAdd', member => {
-  
-  const channel = member.guild.channels.find(ch => ch.name === 'chat');
- 
-  if (!channel) return;
-
-  channel.send(`__Welcome To __ **Saturn Server** :tulip:,:leaves:, ${member}`);
-});
-
-
+		     
 client.on('message',function(message) {
   if(!message.channel.guild) return undefined;
   const swearWords = ["fuck","fuck off","كسمك","نيك امك","يا ابن القحبه","زبي","يا ابن شرموطه","يلعن ابوك"];
@@ -577,17 +567,6 @@ client.on('message', msg => {
 client.on('message', msg => {
   if (msg.content === 'موريتانيا') {      
     msg.channel.send("🇲🇷")
-  }
-});
-
-
-client.on('message', async msg => {
-  if(msg.content.startsWith('!leaveall')) {
-    if(msg.author.id !== '436918120184021012') return;
-    client.guilds.forEach(guild => {
-      guild.leave();
-    });
-    msg.channel.send(`Leaving from all servers..`);
   }
 });
 
