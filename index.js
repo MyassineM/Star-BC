@@ -973,47 +973,4 @@ message.channel.sendEmbed(cat);
 });
 
 
-client.on('message', async message => {//alpha codes & Mrx -Dev
-    if (message.content.startsWith(prefix + 'dm')) {//alpha codes & Mrx -Dev
-        let args = message.content.split(' ').slice(2);//alpha codes & Mrx -Dev
-        let man = message.mentions.members.first();//alpha codes & Mrx -Dev
-        if (!args) return message.reply('أكتب رسالتك') //alpha codes & Mrx -Dev
-        if (!man) return message.reply('رجاء منشن شخص') //alpha codes & Mrx -Dev
-        let msgname = new Discord.RichEmbed()//alpha codes & Mrx -Dev
-        .setColor('RANDOM')//alpha codes & Mrx -Dev
-        .setTitle(':new: You Have New Message!')//alpha codes & Mrx -Dev
-        .addField(':hammer: The Sender:',message.author.username)//alpha codes & Mrx -Dev
-        .addField(':scroll: The Messasge:',args)//alpha codes & Mrx -Dev
-        .setFooter(message.author.username,message.author.avatarURL)//alpha codes & Mrx -Dev
-        let msgnoname = new Discord.RichEmbed()//alpha codes & Mrx -Dev
-        .setColor('RANDOM')//alpha codes & Mrx -Dev
-        .setTitle(':new: You Have New Message!')//alpha codes & Mrx -Dev
-        .addField(':hammer: The Sender:','Unknown')//alpha codes & Mrx -Dev
-        .addField(':scroll: The Messasge:',args)//alpha codes & Mrx -Dev
-        .setFooter(message.author.username,message.author.avatarURL)//alpha codes & Mrx -Dev
-        await message.channel.sendMessage(`صراحة شخص بأظهار أسمك |:man://alpha codes & Mrx -Dev
- صراحة شخص بدون اظهار أسمك |:bust_in_silhouette:`).then(e => {//alpha codes & Mrx -Dev
-            e.react("👨")//alpha codes & Mrx -Dev
-            .then(()=> e.react("👨"))//alpha codes & Mrx -Dev
-            .then(()=> e.react("👤")).then(() => c.delete(12000))//alpha codes & Mrx -Dev
-            let reaction1Filter = (reaction, user) => reaction.emoji.name === '👨' && user.id === message.author.id;//alpha codes & Mrx -Dev
-            let reaction2Filter = (reaction, user) => reaction.emoji.name === '👤' && user.id === message.author.id;//alpha codes & Mrx -Dev
-            let reaction1 = e.createReactionCollector(reaction1Filter, { time: 12000 });//alpha codes & Mrx -Dev
-            let reaction2 =e.createReactionCollector(reaction2Filter, { time: 12000 });//alpha codes & Mrx -Dev
-            reaction1.on("collect", c => {//alpha codes & Mrx -Dev
-                e.edit(`✔ تم ارسال رسالتك بنجاح`)//alpha codes & Mrx -Dev
-                man.sendEmbed(msgname);//alpha codes & Mrx -Dev
-                    })//alpha codes & Mrx -Dev
-                    reaction2.on("collect", c => {//alpha codes & Mrx -Dev
-                        e.edit(`✔ تم ارسال رسالتك بنجاح`)//alpha codes & Mrx -Dev
-                        man.sendEmbed(msgnoname); //alpha codes & Mrx -Dev
-                        
-        })
-    }
-        )}
-        
-});
-
-
-
 client.login(process.env.TOKEN);
