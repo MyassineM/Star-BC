@@ -642,38 +642,6 @@ p.delete(1700);
 }
 });
 
-client.on('guildCreate', guild => {
-   
-  client.users.get("436918120184021012")
-    const Dark&Narox = new Discord.RichEmbed()
-    .setAuthor(`بوتك دخل سيرفر جديد مبروك ✅`)
-    .setDescription(`**
-  Server name: __${guild.name}__
-  Server id: __${guild.id}__
-  Server owner: __${guild.owner}__
-  Member Count: __${guild.memberCount}__
-  Servers Counter : __${client.guilds.size}__**`)
-          .setColor('#36393e')
-          .setFooter('Narox' , client.user.avatarURL)
-         client.users.get("436918120184021012").send({Dark&Narox});
-})
- 
-client.on('guildDelete', guild => {
-   
-  client.users.get("436918120184021012")
 
-  const Dark&Narox = new Discord.RichEmbed()
-  .setAuthor(`Narox Bot. left a server ❎`)
-  .setDescription(`**
- Server name: __${guild.name}__
- Server id: __${guild.id}__
- Server owner: __${guild.owner}__
- Members Count: __${guild.memberCount}__
- Servers Counter : __${client.guilds.size}__**`)
-         .setColor('#36393e')
-         .setFooter('Narox' , client.user.avatarURL)
-         client.users.get("436918120184021012").send({Dark&Narox});
- 
-});
 
 client.login(process.env.TOKEN);
