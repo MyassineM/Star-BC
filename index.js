@@ -435,5 +435,107 @@ client.on('message', function(message) {//Narox
       }
 });
 
+client.on('message', message => {
+  if (message.content.startsWith(prefix + "image")) {
+    var embed = new Discord.RichEmbed()
+    .setTitle("صورة السيرفر")  
+    .setColor("RANDOM")
+    .setImage(message.guild.iconURL)
+    message.channel.sendEmbed(embed);
+  }
+});
+
+client.on('message', message=> {
+    if (message.author.bot) return;
+    if (message.isMentioned(client.user))
+    {
+    message.reply(`**شتبي ليش منشنتني خلني بسيرفر ورع خخخخخخخ الله يعديك**`)
+    }
+});
+
+client.on('message', msg => {
+  if (msg.content === 'فلسطين') {
+    msg.channel.send(":flag_ps:")
+  }
+});
+
+client.on('message', msg => {
+  if (msg.content === 'السعودية') {
+    msg.channel.send(":flag_sa:")
+  }
+});
+
+client.on('message', msg => {
+  if (msg.content === 'مصر') {
+    msg.channel.send(":flag_eg:")
+  }
+});
+
+client.on('message', msg => {
+  if (msg.content === 'المغرب') {
+    msg.channel.send(":flag_ma:")
+  }
+});
+
+client.on('message', msg => {
+  if (msg.content === 'العراق') {
+    msg.channel.send(":flag_iq:")
+  }
+});
+
+client.on('message', msg => {
+  if (msg.content === 'الجزائر') {
+    msg.channel.send(":flag_dz:")
+  }
+});
+
+client.on('message', msg => {
+  if (msg.content === 'الامارات') {
+    msg.channel.send(":flag_ae:")
+  }
+});
+
+client.on('message', msg => {
+  if (msg.content === 'تونس') {
+    msg.channel.send(":flag_tn:")
+  }
+});
+
+client.on('message', msg => {
+  if (msg.content === 'سوريا') {
+    msg.channel.send(":flag_sy:")
+  }
+});
+
+client.on('message', msg => {
+  if (msg.content === 'ليبيا') {
+    msg.channel.send(":flag_ly:")
+  }
+});
+
+client.on('message', msg => {
+  if (msg.content === 'قطر') {
+    msg.channel.send(":flag_qa:")
+  }
+});
+
+client.on('message', msg => {
+  if (msg.content === 'الصومال') {
+    msg.channel.send(":flag_so:")
+  }
+});
+
+client.on('message', msg => {
+  if (msg.content === 'عمان') {
+    msg.channel.send(":flag_om:")
+  }
+});
+
+client.on('message', msg => {
+  if (msg.content === 'موريتانيا') {
+    msg.channel.send(":flag_mr:")
+  }
+});
+
 
 client.login(process.env.TOKEN);
