@@ -642,44 +642,23 @@ p.delete(1700);
 }
 });
 
-
-client.on("message", msg => { //Narox Dev
-    if(msg.author.bot) return;
-    if(msg.channel.type === 'dm') return;
-  let prefix = '!'; //البرفكس
-  let msgarray = msg.content.split(" ");
-  let cmd = msgarray[0];
-  let args = msgarray.slice(1);
-  if(cmd === `${prefix}warn`){//الامر
-    
-    
-  
-    let rUser = msg.guild.member(msg.mentions.users.first() || msg.guild.members.get(args[0]));
-  if(!rUser) return msg.channel.send("Couldn't find users.");
-      let reason = args.join(" ").slice(22);
-  
-      let reportembed = new Discord.RichEmbed()
-      .setDescription("Warn")
-      .setColor("BLACK")
-      .addField("Warn User", `${rUser} with ID: ${rUser.id}`)
-      .addField("Warn By", `${msg.author} with ID: ${msg.author.id}`)
-      .addField("Channel", msg.channel)
-      .addField("Time", msg.createdAt)
-      .addField("Reason",`${reason}`)
-      
-      
-      let reportchannel = msg.guild.channels.find(`name`,"warn-log"); //حط هنا اسم الروم الي يوريك بعض المعلومات
-      if(!reportchannel) return msg.channel.send("Couldn't find `warn-log` channel. "); //ط هنا اسم الروم الي يوريك بعض المعلومات
-      
-      msg.delete().catch(O_o=>{});
-      reportchannel.send(reportembed);
-      let role = msg.guild.roles.find(`name`, 'Warn'); 
-      if(!role) return msg.guild.channel.send("Could't find `Warn` role."); 
-      rUser.addRole(role);
-      
-          return;
-      }
-      });
-
+client.on("message", msg => {
+  if(msg.content === '$' + "id") {
+      const embed = new Discord.RichEmbed();
+  embed.addField("🔱| اسم الحساب :", `${msg.author.username}#${msg.author.discriminator}`, true)
+          .addField("🆔| الاي دي :", `${msg.author.id}`, true)
+          .setColor("RANDOM")
+          .setFooter(msg.author.username , msg.author.avatarURL)
+          .setThumbnail(`${msg.author.avatarURL}`)
+          .setTimestamp()
+          .setURL(`${msg.author.avatarURL}`)
+          .addField('📛| الحالة :', `${msg.author.presence.status.toUpperCase()}`, true)
+          .addField('🎲| بلاينج :', `${msg.author.presence.game === null ? "No Game" : msg.author.presence.game.name}`, true)
+          .addField('🏅| الرتب : ', `${msg.member.roles.filter(r => r.name).size}`, true)
+          .addField('📅| تم الانضمام للديسكورد في :', `${msg.createdAt}`,true)
+          .addField('🤖| هل هو بوت ؟', `${msg.author.bot.toString().toUpperCase()}`, true);
+      msg.channel.send({embed: embed})
+  }
+});
 
 client.login(process.env.TOKEN);
