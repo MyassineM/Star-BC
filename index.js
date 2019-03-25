@@ -745,26 +745,6 @@ client.on('message', async msg => {
   }
 });
 
-client.on('message', async message => {
-  if(message.author.bot) return;
-  let prefix = '!';
-
-  let command = message.content.split(" ")[0].slice(prefix.length);
-  let args = message.content.split(" ").slice(1);
-  if(!message.content.toLowerCase().startsWith(prefix)) return;
-
-  if(command == 'dcolors') {
-    if(!message.member.hasPermission("ADMINISTRATOR")) return message.channel.send(`لاتمتلك الصلاحيات لفعل ذلك! :x:`);
-    message.channel.send("جاري المسح..").then(async m => {
-      await message.guild.roles.forEach(role => {
-        if(/^\d+$/gi.test(role.name)) {
-          role.delete();
-        }
-      });
-      m.edit(`تم إزالة جميع الالوان.`)
-    });
-  }
-});
 
 client.on('message', message => {
   if (message.content.startsWith(prefix + "image")) {
@@ -810,37 +790,6 @@ client.on('message', message => { //ping
                     
 });
 
-client.on('message', message => {
-    var prefix = "!"
-     let command = message.content.split(" ")[0];
-   command = command.slice(prefix.length);
- 
-   let args = message.content.split(" ").slice(1);
- 
- 
- if(command == "draw") {
-     var Canvas = require('canvas')
-   , Image = new Canvas.Image
-   , canvas = new Canvas(450, 170)
-   , ctx = canvas.getContext('2d');
-   ctx.font = '30px Impact';
-   let args = message.content.split(" ").slice(1);
-   
- Image.src = canvas.toBuffer();
- 
-     console.log(Image);
- ctx.drawImage(Image, 0, 0, Image.width / 470, Image.height / 170);
- ctx.fillText(args.join("  "),110, 70);
- 
- 
- ctx.beginPath();
- ctx.lineTo(50, 102);
- ctx.stroke();
- 
- message.channel.sendFile(canvas.toBuffer());
- }
- 
- });
 
 	 
 client.on("message", (message) => {
@@ -856,7 +805,7 @@ client.on('message', message=> {
     if (message.author.bot) return;
     if (message.isMentioned(client.user))
     {
-    message.reply(`**شتبي ليش منشنتني خلني بسيرفر وخل الله يعديك**`)
+    message.reply(`**شتبي ليش منشنتني خلني بسيرفر ورع خخخخخخخ الله يعديك**`)
     }
 });
 
@@ -957,19 +906,6 @@ p.edit("✅")
 p.delete(1700);
 })
 }
-});
-
-
-
-client.on('message', message => {
-var prefix = "!";
-var cats = ["http://www.shuuf.com/shof/uploads/2015/09/09/jpg/shof_b9d73150f90a594.jpg","https://haltaalam.info/wp-content/uploads/2015/05/0.208.png","https://haltaalam.info/wp-content/uploads/2015/05/266.png","https://haltaalam.info/wp-content/uploads/2015/05/250.png","https://haltaalam.info/wp-content/uploads/2017/02/0.2517.png","https://pbs.twimg.com/media/CP0mi02UAAA3U2z.png","http://www.shuuf.com/shof/uploads/2015/08/31/jpg/shof_3b74fa7295ec445.jpg","http://www.shuuf.com/shof/uploads/2015/08/22/jpg/shof_fa3be6ab68fb415.jpg","https://pbs.twimg.com/media/CSWPvmRUcAAeZbt.png","https://pbs.twimg.com/media/B18VworIcAIMGsE.png"]
-        var args = message.content.split(" ").slice(1);
-    if(message.content.startsWith(prefix + 'هل تعلم')) {
-         var cat = new Discord.RichEmbed()
-.setImage(cats[Math.floor(Math.random() * cats.length)])
-message.channel.sendEmbed(cat);
-    }
 });
 
 
