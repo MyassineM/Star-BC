@@ -618,8 +618,6 @@ client.on('message', message => {
         }).catch(() => {
             message.channel.send(':X: The user have dms disabled');
         });
-    };
-});
 
 client.on('message', message => {
   if (!message.content.startsWith(prefix)) return;
