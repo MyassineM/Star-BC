@@ -476,27 +476,4 @@ client.on('message', function(message) {//Narox
 });
 
 
-client.on('message', message => {
-  if (message.content.startsWith(prefix + "image")) {
-    var embed = new Discord.RichEmbed()
-    .setTitle("صورة السيرفر")  
-    .setColor("RANDOM")
-    .setImage(message.guild.iconURL)
-    message.channel.sendEmbed(embed);
-  }
-});
-
-
-
-client.on('message', message=> {
-    if (message.author.bot) return;
-    if (message.isMentioned(client.user))
-    {
-    message.reply(`**شتبي ليش منشنتني خلني بسيرفر ورع خخخخخخخ الله يعديك**`)
-    }
-});
-
-
-
-
 client.login(process.env.TOKEN);
