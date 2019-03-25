@@ -574,4 +574,61 @@ client.on('message' , message => {
         }
     });
 
+client.on('message', message => {
+    if (message.content.includes('discord.gg')){
+                        if(!message.channel.guild) return message.reply ('')
+                    if (!message.member.hasPermissions(['MANAGE_MESSAGES'])){
+       message.channel.send('ban <@' + message.author.id + '>')
+       message.delete() 
+       }
+    }
+          if (message.content.startsWith("ban")) {
+             if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply();
+             var member= message.mentions.members.first();
+             member.ban().then((member) => {
+                 message.channel.sendMessage("", {embed: {
+                 author: {
+                 },
+                 title: 'بسبب النشر ' + member.displayName + ' تم حظر', 
+                 color: 490101,
+                 }
+               });
+           } 
+         ) 
+       } 
+   });  
+
+client.on('message', message => { ///zezo and alfa codes
+ 
+      if(message.content.startsWith ("#خطوبه")) {  ///zezo and alfa codes
+      if(!message.channel.guild) return message.reply('**هذا الامر فقط للسيرفرات**')  ///zezo and alfa codes
+      var proposed = message.mentions.members.first()  ///zezo and alfa codes
+     
+      if(!message.mentions.members.first()) return message.reply(' 😏 **لازم تخطب واحده يا ابني**').catch(console.error);  ///zezo and alfa codes
+      if(message.mentions.users.size > 1) return message.reply(' 😳 **بدك تخون بنتي ؟**').catch(console.error);  ///zezo and alfa codes
+       if(proposed === message.author) return message.reply(`**.**`);  ///zezo and alfa codes
+        if(proposed === client.user) return message.reply(`** تبي تخطبني وانا بمقام ابوك انقلع **`);  ///zezo and alfa codes
+              message.channel.send(`**${proposed}   ///zezo and alfa codes
+ بنتي هاد شاب بده يخطبك  ${message.author}         ///zezo and alfa codes
+ معك 30 ثانيه
+ اكتبي اقبل او لا لو شاب مناسب لك**`)   ///zezo and alfa codes
+ 
+const filter = m => m.content.startsWith("اقبل");
+message.channel.awaitMessages(filter, { max: 1, time: 30000, errors: ['time'] })
+.then(collected =>{
+    message.channel.send(` **${message.author} و ${proposed} الف الف مبروك يا ابنائئ انشاء الله تتجوزا عن قريب** `);
+})
+ 
+   const filte = m => m.content.startsWith("لا");
+message.channel.awaitMessages(filte, { max: 1, time: 30000, errors: ['time'] })
+.then(collected =>{
+   message.channel.send(`  **${message.author} انا متل ابوك بس بنتي ما تبيك ياريت تنقلع** `); ///zezo and alfa codes
+ 
+}) ///zezo and alfa codes
+ 
+     
+  } ///zezo and alfa codes
+ 
+}); ///zezo and alfa codes
+
 client.login(process.env.TOKEN);
