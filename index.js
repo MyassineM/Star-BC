@@ -598,26 +598,6 @@ client.on('message', message => {
        } 
    });  
 
-client.on('message', message => {
-    let args = message.content.split(' ').slice(2);//Mrx Dev
-
-    if(message.content.startsWith(prefix + 'dm')) {//Mrx Dev
-        let man = message.mentions.users.first();
-        let Mrx = new Discord.RichEmbed()
-        .setColor('RANDOM')
-        .setTitle('**🆕 You Have New Message!**')//Mrx Dev
-        .setThumbnail(man.avatarURL)
-        .addField('**🔨 The Sender:**',man.username ,true)//Mrx Dev
-        .addField('**📜 The Messasge:**',args)
-        .setFooter(client.user.username,client.user.avatarURL)//Mrx Dev
-        
-        if(!man) return message.reply('Please mention someone!');
-        if (!args) return message.reply('**Type Your Message Plz**');
-        man.sendEmbed(Mrx).then(() => {
-            message.channel.send('✅ Successfully sent the message!');
-        }).catch(() => {
-            message.channel.send(':X: The user have dms disabled');
-        });
 
 client.on('message', message => {
   if (!message.content.startsWith(prefix)) return;
