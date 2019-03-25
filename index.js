@@ -537,5 +537,15 @@ client.on('message', msg => {
   }
 });
 
+client.on('message', message => {
+  var prefix = "§"
+          if(message.content.startsWith(prefix + 'skin')) {
+              let args = message.content.split(' ').slice(1).join(' ');
+              if (!args) return message.channel.send("**من فضلك ضع إسمك**");
+              var link = (`https://minotar.net/body/${args}/100.png`);
+              message.channel.send(link);
+          }
+      });
+
 
 client.login(process.env.TOKEN);
