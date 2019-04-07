@@ -40,6 +40,27 @@ client.on("message", message => {
   });
 
 
+client.on('message', message => {
+  if (message.author.bot) return;
+  if (!message.content.startsWith(prefix)) return;
+
+  let command = message.content.split(" ")[0];
+  command = command.slice(prefix.length);
+
+  let args = message.content.split(" ").slice(1);
+  
+ 
+
+if (command == "say") {
+    let say = new Discord.RichEmbed()
+    .setDescription(args.join("  "))
+    .setColor(0x23b2d6)
+    message.channel.sendEmbed(say);
+    message.delete();
+  }
+
+
+});
 
 
 
@@ -1316,6 +1337,83 @@ client.on('message', message => {
     
     }
     });
-	
+
+
+	client.on('message', message => {
+            if (message.content.startsWith("!القوانين")) {
+     let embed = new Discord.RichEmbed()
+.setThumbnail(message.author.avatarURL)
+.addField('     **اولا** ' ,' **ممنوع السب** ')
+.addField('     **ثانيا** ' ,' **لا تسوي سبام ** ')
+.addField('     **ثالثا** ' ,' **لا تزعج الاخرين** ')
+.addField('    **رابعا**' ,' **ممنوع الاعلانات** ')
+.addField('    **خامسا**' ,' **احترم الاخرين** ')
+.addField('    **سادسا**' ,' **لا تنشر في الشات او بل خاص** ')
+.addField('    **سابعا**' ,' **لا تنشر روابط!** ')
+.addField('    **ثامنا**' ,' **لا تسوي سبام ايموجي** ')
+.addField('    **تاسعا**' ,' **تكلم فقط في الغرف المسموحه لها بالكلام** ')
+.setColor('#7d2dbe')
+  message.channel.sendEmbed(embed);
+    }
+});
+
+client.on('message', message => {
+    if (message.content.startsWith('!clearr')) {
+      if (!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply(`ماعندك هذا البرمشن[*MANAGE_MESSAGES*] `).catch(console.error);
+  message.delete()
+  if(!message.channel.guild) return;
+  let args = message.content.split(" ").slice(1);
+  
+  const messagecount = parseInt(args.join(' '));
+  
+  message.channel.fetchMessages({
+  
+  limit: messagecount
+  
+  }).then(messages => message.channel.bulkDelete(messages));
+  message.channel.sendMessage("", {embed: {
+    title: "``✏️✅ تــم مسح الشات ``",
+    color: 0x06DF00,
+    footer: {
+    
+    }
+    }}).then(msg => {msg.delete(3000)});
+  };
+  
+  });
+
+client.on('message', message => {
+            if (message.content.startsWith("!botinfo")) {
+     let embed = new Discord.RichEmbed()
+.addField(' عدد السيرفرات التي بها',`[${client.guilds.size}]  `)
+.addField(' عدد الاعضاء ',` [${client.users.size}] `)
+.addField('الغرف ',`[${client.channels.size}]`) 
+.addField(' البنق ',`[${Date.now() - message.createdTimestamp}]`) 
+.addField(' Devolope By MrKayan ')
+.setColor('#7d2dbe')
+  message.channel.sendEmbed(embed);
+    }
+});
+
+client.on("message", msg => {
+  if(msg.content === '%' + "id") {
+      const embed = new Discord.RichEmbed();
+  embed.addField(":trident:|اسم الحساب :", `${msg.author.username}#${msg.author.discriminator}`, true)
+          .addField(":id:| الاي دي :", `${msg.author.id}`, true)
+          .setColor("RANDOM")
+          .setFooter(msg.author.username , msg.author.avatarURL)
+          .setThumbnail(`${msg.author.avatarURL}`)
+          .setTimestamp()
+          .setURL(`${msg.author.avatarURL}`)
+          .addField(':name_badge:|الحالة', `${msg.author.presence.status.toUpperCase()}`, true)
+          .addField(':game_die:|بلاينج :', `${msg.author.presence.game === null ? "No Game" : msg.author.presence.game.name}`, true)
+          .addField(':medal:|الرتب : ', `${msg.member.roles.filter(r => r.name).size}`, true)
+          .addField(':date:|تم الانضمام للديسكورد في :', `${msg.createdAt}`,true)
+          .addField(':robot:|هل هو بوت ؟', `${msg.author.bot.toString().toUpperCase()}`, true);
+      msg.channel.send({embed: embed})
+  }
+});
+
+
 
 client.login(process.env.TOKEN);
