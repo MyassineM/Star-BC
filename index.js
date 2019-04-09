@@ -452,7 +452,7 @@ client.on('message', function(message) {//Narox
         .setThumbnail(`${message.author.avatarURL}`)//Narox
         .setDescription(`\n\n\`\`\`${message.content}\`\`\``)
         .setFooter(`From **${message.author.tag} (${message.author.id})**`)
-    client.channels.get("559376270350221312").send({embed:Narox});//Narox
+    client.channels.get("565200208649256981").send({embed:Narox});//Narox
       }
 });
 
