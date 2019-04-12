@@ -1718,15 +1718,4 @@ if (message.content.startsWith(prefix + 'trans')) {
       message.channel.send(IzRo);
     });
 
-
-client.on('message', message => {  
- var guild = message.guild;
-         if (message.content.startsWith(prefix + "love")) {
-          const embed = new Discord.RichEmbed()
-          .setColor('0x7f10d3')
-          .setDescription(` ${message.author} sent a :heart: to ${message.mentions.users.first()}`)    
-          message.channel.send({ embed });  
-        });
-	
-
 client.login(process.env.TOKEN);
