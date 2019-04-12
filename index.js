@@ -1717,12 +1717,6 @@ if (message.content.startsWith(prefix + 'trans')) {
       .addField('عدد اعضاء السيرفر',`${message.guild.memberCount}`)
       message.channel.send(IzRo);
     });
-	
-	
-const dateFormat = require('dateformat');
-var Canvas = require('canvas')//لاتنسى البكجات!!
-var jimp = require('jimp')
-var moment = require("moment");
 
 
 client.on('message', message => {
