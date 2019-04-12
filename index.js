@@ -2050,43 +2050,7 @@ client.on('message', message => {
     }
 });
 
-client.on('message', function(msg) {
-         let verifLevels = ["None", "Low", "Medium", "(╯°□°）╯︵  ┻━┻", "┻━┻ミヽ(ಠ益ಠ)ノ彡┻━┻"];
-         let region = {
-    "brazil": "Brazil",
-    "eu-central": "Central Europe",
-    "singapore": "Singapore",
-    "Russia": "Russia",
-    "us-central": "U.S. Central",
-    "sydney": "Sydney",
-    "us-east": "U.S. East",
-    "us-south": "U.S. South",
-    "us-west": "U.S. West",
-    "eu-west": "Western Europe",
-    "vip-us-east": "VIP U.S. East",
-    "london": "London",
-     "amsterdam": "Amsterdam",
-     "hongkong": "Hong Kong"
-                        };
-                      
-                          if (msg.content.startsWith(prefix + '!ourserver')) {
-                          if (!msg.guild) return message.reply('**Only Servers | ❌**')
-                          let embed = new Discord.RichEmbed()
-    .setColor('RANDOM')
-    .setThumbnail(msg.guild.iconURL)
-    .setTitle(`${msg.guild.name} Detalis || :clipboard:`)
-    .addField('**» Server Owner Ship**',`**${msg.guild.owner}**`,true)
-    .addField('**» Server ID**',`**${msg.guild.id}**`,true)
-    .addField('**» Member Count**',`[** __${msg.guild.memberCount}__ **]`,true)
-    .addField('**» Verification Level**',`[** __${verifLevels[msg.guild.verificationLevel]}__** ]`,true)
-    .addField('**» Region**',`[** __${region[msg.guild.region]}__** ]`,true)
-    .addField('**» Text Channels**',`[** __${msg.guild.channels.filter(m => m.type === 'text').size}__** ]`,true)
-    .addField('**» Voice Channels**',`[** __${msg.guild.channels.filter(m => m.type === 'voice').size}__ **]`,true)
-    .addField('**» Created AT**',msg.guild.createdAt.toLocaleString())
-    .setFooter("Ultra Bot")
-msg.channel.send({embed:embed});
-}
- });
+
 
 client.on('message', msg => {
             if (msg.author.bot) return;
