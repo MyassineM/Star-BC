@@ -2100,59 +2100,7 @@ client.on('message', message => {
 }
 }); 
 
-client.on('message', message => { // تعريف المسج
-    if(!stats[message.author.id+message.guild.id]) stats[message.author.id+message.guild.id] = { // اذا الستاتس من نفس الشخص ايدي , و مسج جيلد , ستاتس من  الشخص الي كتب الراسلة و مسج جيلد
-        bans: "0", // 0 حظر
-        warns: "0", // 0 انذار
-        mutes: "0" // 0 ميوت
-    }
-    let ryex = message.mentions.members.first();  // تعريف ريكس
-    let reason = message.content.split(" ").slice(2).join(" "); // تعريف الريسون
-    if(message.content.startsWith(prefix + "warn")){ // " اذا الرسالة بدأت بـ برفكس "انذار
-        if(!ryex) return message.reply(":x:  -  **Please Can You Meantion a User?!**"); // اذا ريكس مثل ماعرفنا فوق ، كتبها بدون منشن يقله منشن الشخص
-            message.delete(); // يحذف الرسالة
-        if(!reason) return message.reply(":x:  -  **Please Can You Type a Reason Efter Mention?!**"); // اذا ماكتب الريسون يرد عليه..
-            message.delete(); // تنحذف الرسالة
-        message.channel.send(`${ryex} was warned For: ${reason}`); // هنا الرسالة ترسل ..
-        message.delete(); // الرسالة تنحذف
-        stats[message.author.id+message.guild.id].warns++; // هنا يضيف وارن للشخص في معدل الستاتس حقه
-        fs.writeFile("./staff.json", JSON.stringify(stats), function(e){ // بـ ملف staff.json
-            if (e) throw e;
-        }); // تقفيله
-    } // تقفيله
-    if(message.content.startsWith(prefix + "mute")){ // اذا الرسالة  وصلت بدات بـ برفكس "mute"
-        if(!ryex) return message.reply(":x:  -  **Please Can You Mention a User?!**"); // اذا ريكس مثل ماعرفنا فوق ، كتبها بدون منشن يقله منشن الشخص
-            message.delete();  // يحذف الرسالة
-        if(!reason) return message.reply(":x:  -  **Please Can You Type a Reason Efter Mention?!**"); // اذا ماكتب الريسون يرد عليه,,
-            message.delete(); // يحذف الرسالة
-        message.channel.send(`${ryex} was muted for: ${reason}`).then(() => { // هتا الرسالة ترسل الريسون
-            ryex.addRole(r => r.name === "Muted"); // هنا يضيف له رتبة Muted.
-        }) // تقفيله
-        message.delete(); // الرسالة تنحذف
-        stats[message.author.id+message.guild.id].mutes++; // هنا يضيف ميوت في معدل الستاتس حقه
-        fs.writeFile("./staff.json", JSON.stringify(stats), function(e){ // بـ ملف staff.json
-            if (e) throw e;
-        }); // تقفيله
-    } // تقفيله
-    if(message.content.startsWith(prefix + "ban")){ // اذا الرسالة وصلت بدأت بـ برفكس "ban"
-        if(!ryex) return message.reply(":x:  -  ** Please Can You Mention a User?!**"); // اذا ريكس مثل ماعرفنا فوق كتبها بدون منشن يقله منشن الشخص
-            message.delete(); // يحذف الرسالة
-        if(!reason) return message.reply(":x:  -  **Can You Type a Reason Efter a Mention?!**"); // اذا ماكتب الريسون يرد عليه ..
-            message.delete(); // يحذف الرسالة
-        message.channel.send(`${ryex} was banned for ${reason}`).then(() => { // هنا الرسالة ترسل الريسون
-            ryex.ban(); // وهنا يبنده
-        }) // تقفيله
-        message.delete(); // يحذف الرسالة
-        stats[message.author.id+message.guild.id].bans++; // هنا يضيف بان بـ معدل الستاتس حقه
-        fs.writeFile("./staff.json", JSON.stringify(stats), function(e){ // بـ ملف staff.json
-            if (e) throw e;
-        }); // تقفيله
-    } // تقفيله
-    if(message.content.startsWith(prefix + "mystats")){ // هنا اذا الرسالة وصلت بدأت بـ برفكس "mystats"
-        message.reply(`You have been banned **` + stats[message.author.id+message.guild.id].bans + "** users!\n You have been muted **" + stats[message.author.id+message.guild.id].mutes + "** user \n You have been warned **"+ [message.author.id+message.guild.id].warns + "** users!"); // يرد عليه و يقله انه انت عاطي هاذا العدد من الوارن و هاذا العدد من الميوت و الوران
-    } // تقفيله
-}); //تقفيله الكود
-  
+
 client.on('message', message => {  
  var guild = message.guild;
          if (message.content.startsWith(prefix + "love")) {
