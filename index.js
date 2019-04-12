@@ -1719,24 +1719,6 @@ if (message.content.startsWith(prefix + 'trans')) {
     });
 
 
-client.on('message', msg => {
-            if (msg.author.bot) return;
-            let args = msg.content.split(" ").slice(1);
-              if(msg.content.startsWith(prefix + '!byec')) {
-              let textxt = args.slice(0).join("");
-              if(msg.member.hasPermission("MANAGE_MESSAGES")) {
-              if (textxt == ""){ return msg.channel.bulkDelete(50).then (msg.channel.send("**Done Delete Messages | ✅**"))
-          } else {
-              msg.delete().then
-              msg.delete().then
-              msg.channel.bulkDelete(textxt);
-                  msg.channel.send(`**Done Delete ${textxt} Messages | :white_check_mark:**`).then(m => m.delete(3000));
-                  }    
-              }
-          }
-          });
-
-
 client.on('message', message => {
     if (message.content === ('!mybot')) {
     message.channel.send({
@@ -1759,35 +1741,5 @@ client.on('message', message => {
           message.channel.send({ embed });  
         });
 	
-client.on('message', message => {
-    if(message.content.startsWith(prefix + 'ip')) {
-   const args = message.content.split(" ")
-   const ip = args[1]
-   const port = args[2]
-      if(!ip) return message.channel.send("** Write Server IP **");
-      if(!port){
-          let embed = new Discord.RichEmbed()
-          .setColor('#642EFE')
-          .setThumbnail(`https://api.minetools.eu/favicon/${ip}/25565`) 
-          .addField("📜 Server NIP",`${ip}`,true)
-          .addField("🌐 Server Port",`No PorT`)
-          .setImage(`http://status.mclive.eu/${ip}/${ip}/25565/banner.png`) 
-          .setFooter(`KingBoT`)
-          .setTimestamp()
-      message.channel.send(embed)
-      }
-      if(port){
-          let rembed = new Discord.RichEmbed()
-          .setColor('#642EFE')
-          .setThumbnail(`https://api.minetools.eu/favicon/${ip}/${port}`) 
-          .addField("📜 Server NIP",`${ip}`,true)
-          .addField("🌐 Server Port",`${port}`, true)
-          .setImage(`http://status.mclive.eu/${ip}/${ip}/${port}/banner.png`) 
-          .setFooter(`KingBoT`)
-                  .setTimestamp()
-      message.channel.send(rembed)
-      }
-      
-  });
 
 client.login(process.env.TOKEN);
