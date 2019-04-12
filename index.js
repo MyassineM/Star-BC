@@ -1738,24 +1738,6 @@ client.on('message', msg => {
 
 
 client.on('message', message => {
-    
-    if (message.content === "Blood") {
-        setInterval(function(){
-        message.edit('B')    
-        message.edit('Bl')    
-        message.edit('Blo')
-        message.edit('Bloo')
-        message.edit('Blood')
-        message.edit('Blood S')
-        message.edit('Blood Ser')
-        message.edit('Blood Serv')
-        message.edit('Blood Server')
-        }, 1000)
-    }
-    
-});
-
-client.on('message', message => {
     if (message.content === ('!mybot')) {
     message.channel.send({
         embed: new Discord.RichEmbed()
