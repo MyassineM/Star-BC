@@ -1718,4 +1718,314 @@ if (message.content.startsWith(prefix + 'trans')) {
       message.channel.send(IzRo);
     });
 
+client.on('message', message => { /// by Killer fox
+    if (message.content == "!اسرع") {
+        var x = ["ملك",
+"ماستر",
+"يوم",
+"أرض الأحلام",
+"ألبرازيل",
+"العراق",
+"ألمملكة ألعربية ألسعودية",
+"القسطنطينية",
+"النهاية",
+"امازون",
+"جافاسكربت",
+"سهله مو صعبه",
+"طبق رطب مرق بقر",
+"متجر",
+"شجرة الأوغيري",
+"عش العصفور",
+"هلا بلخميس",
+"الحوت الأزرق",
+];
+        var x2 = ['ملك',
+        "ماستر",
+        "يوم",
+        "أرض الأحلام",
+"ألبرازيل",
+"العراق",
+"ألمملكة ألعربية ألسعودية",
+"القسطنطينية",
+"النهاية",
+"امازون",
+"جافاسكربت",
+"سهله مو صعبه",
+"طبق رطب مرق بقر",
+"متجر",
+"شجرة الأوغيري",
+"عش العصفور",
+"هلا بلخميس",
+"الحوت الأزرق",
+       
+       
+       
+       
+        ];
+       
+        var x3 = Math.floor(Math.random()*x.length) /// by KillerFox
+        message.channel.send(` اول شخص يكتب :  __**${x[x3]}**__
+لديك 15 ثانية للاجابة`).then(msg1=> {
+            var r = message.channel.awaitMessages(msg => msg.content == x2[x3], {
+                maxMatches : 1,
+                time : 15000,
+                errors : ['time']
+            })
+        r.catch(() => {
+            return message.channel.send(`:negative_squared_cross_mark: لقد انتهى الوقت ولم يقم أحد بالأجابة بشكل صحيح
+            الإجآبة الصحيحةة هي __**${x2[x3]}**__`)
+        })
+       
+        r.then((collected)=> { /// by KillerFox
+            message.channel.send(`${collected.first().author} لقد قمت بكتابة الكلمة في الوقت المناسب  `);
+        })
+        })
+    }
+});
+
+client.on('message', message => {
+    if (message.content == "!جمع") { /// by KillerFox in Alpha Codes
+        var x = ["212+212=?",
+"321+43=?",
+"4534+23",
+"23+3434=?",
+"2311+32=?",
+"765+343=?",
+"343+1121=?",
+"43234+1=?",
+"10000000000+2=?",
+"232+21=?",
+"12+23=?",                 
+];
+        var x2 = ['424',
+        "364",
+        "4557",
+        "3457",
+		"2343",
+		"1108",
+    "1464",
+    "43235",
+   "10000000002",
+  "253",
+  "35",
+                  
+        ];
+        
+        var x3 = Math.floor(Math.random()*x.length)  /// by KillerFox in Alpha Codes
+        message.channel.send(` اول شخص يحل جمع : __**${x[x3]}**_
+لديك 15 ثانية للاجابة`).then(msg1=> {
+            var r = message.channel.awaitMessages(msg => msg.content == x2[x3], {
+                maxMatches : 1,
+                time : 15000,
+                errors : ['time']
+            })
+        r.catch(() => {  /// by KillerFox in Alpha Codes
+            return message.channel.send(`:negative_squared_cross_mark: لقد انتهى الوقت ولم يقم أحد بالأجابة بشكل صحيح 
+            الإجآبة الصحيحةة هي __**${x2[x3]}**__`)  /// by KillerFox in Alpha Codes
+        })
+        
+        r.then((collected)=> {  /// by KillerFox in Alpha Codes
+            message.channel.send(`${collected.first().author} لقد قمت بحل جمع في الوقت المناسب  `);
+        })
+        })
+    }
+})
+
+client.on('message', message => {  /// by KillerFox in Alpha Codes
+    if (message.content == "!ضرب") {  /// by KillerFox in Alpha Codes
+        var x = ["9x9=?",
+"8x9=?",
+"4x4=?",
+"2x22=?",
+"12x2=?",
+"7x7=?",
+"5x5=?",
+"9x3=?",
+"2342432x0=?",
+"21321x1=?",
+"3x4x5=?",
+];
+        var x2 = ['81',
+        "72",
+        "16",
+        "42",
+		"22",
+		"49",
+		"25",
+		"27",
+    "0",
+    "21321",
+    "60",
+        
+        ];
+        
+        var x3 = Math.floor(Math.random()*x.length)  /// by KillerFox in Alpha Codes
+        message.channel.send(`  اول شخص يحل ضرب :  __**${x[x3]}**__
+لديك 15 ثانية لحل ضرب`).then(msg1=> {
+            var r = message.channel.awaitMessages(msg => msg.content == x2[x3], {
+                maxMatches : 1,
+                time : 15000,
+                errors : ['time']  /// by KillerFox in Alpha Codes
+            })
+        r.catch(() => {  /// by KillerFox in Alpha Codes
+            return message.channel.send(`:negative_squared_cross_mark: لقد انتهى الوقت ولم يقم أحد بالأجابة بشكل صحيح 
+            الإجآبة الصحيحةة هي __**${x2[x3]}**__`)  /// by KillerFox in Alpha Codes
+        })
+        
+        r.then((collected)=> {
+            message.channel.send(`${collected.first().author}لقد قمت بكتابة حل  في الوقت المناسب  `);
+        })
+        })
+    }
+})
+
+client.on('message', message => {  /// by KillerFox in Alpha Codes
+    if (message.content == "!طرح") {  /// by KillerFox in Alpha Codes
+        var x = ["4326-2345=?",
+"5822-8547=?",
+"543-823=?",
+"1500-500=?",
+"4322-2768=?",
+"5652-1255=?",
+"3421-11234=?",
+"34545-1233=?",
+"23456-54332=?",
+"2312-3433=?",
+"4321-321=?",
+];
+        var x2 = ['1981',
+        "-2725",
+        "-280",
+        "1000",
+"1554",
+"4397",
+"-7813",
+"33312",
+"-30876",
+"1121",
+"4000",
+
+        
+        ];
+        
+        var x3 = Math.floor(Math.random()*x.length)
+        message.channel.send(`  اول شخص يكتب حل صح :  __**${x[x3]}**__
+لديك 15 ثانية لكتابة حل صحيح`).then(msg1=> {
+            var r = message.channel.awaitMessages(msg => msg.content == x2[x3], {  /// by KillerFox in Alpha Codes
+                maxMatches : 1,
+                time : 15000,
+                errors : ['time']
+            })
+        r.catch(() => {
+            return message.channel.send(`:negative_squared_cross_mark: لقد انتهى الوقت ولم يقم أحد بالأجابة بشكل صحيح 
+            الإجآبة الصحيحةة هي __**${x2[x3]}**__`)
+        })
+        
+        r.then((collected)=> {
+            message.channel.send(`${collected.first().author}لقد قمت بكتابة حل في الوقت المناسب  `);
+        })
+        })
+    }
+})
+
+client.on('message', message => {
+    if (message.content == "!عواصم"){
+        var x = ["ما عاصمة **المغرب**",
+    "ما عاصمة **افغانستان**",
+    "ما عاصمة **الجزائر **",
+    "ما عاصمة **الارجنتين",
+    "ما عاصمة ** مصر**",
+    "ما عاصمة ** استراليا**",
+    "ما عاصمة ** البرازيل**",
+    "ما عاصمة **قطر  **",
+    "ما عاصمة **السعودية  **",
+    "ما عاصمة **سوريا  **",
+    "ما عاصمة **تركيا  **",
+    "ما عاصمة **العراق  **",
+    "ما عاصمة **لبنان  **",
+    "ما عاصمة **فلسطين  **",
+    "ما عاصمة **امريكا  **",
+   "ما عاصمة **كندا  **",
+   "ما عاصمة **البرازيل  **",
+];
+        var x2 = ['الرباط',
+        "كابل",
+        "الجزائر",
+      "بوينس ايرس",
+"القاهرة",
+"كانبرا",
+"برازيليا",
+"الدوحة",
+      "الرياض",
+      "دمشق",
+      "انقرة",
+    "بغداد",
+      "بيروت",
+    "القدس",
+  "وشنطن",
+    "اوتاوا",
+  "برازيليا",
+  
+        
+        ];
+        
+        var x3 = Math.floor(Math.random()*x.length)  /// by KillerFox in Alpha Codes
+        message.channel.send(` اول شخص يكتب عاصمة صح :  __**${x[x3]}**__
+لديك 20 ثانية لكتابة عاصمة صحيحة`).then(msg1=> {
+            var r = message.channel.awaitMessages(msg => msg.content == x2[x3], {  /// by KillerFox in Alpha Codes
+                maxMatches : 1,
+                time : 20000,
+                errors : ['time']
+            })
+        r.catch(() => {
+            return message.channel.send(`:negative_squared_cross_mark: لقد انتهى الوقت ولم يقم أحد بالأجابة بشكل صحيح 
+            الإجآبة الصحيحةة هي __**${x2[x3]}**__`)
+        })
+        
+        r.then((collected)=> {
+            message.channel.send(`${collected.first().author}لقد قمت بكتابة عاصمة صح في الوقت المناسب  `);
+        })
+        })
+    }
+});
+
+client.on('message', msg => {
+            if (msg.author.bot) return;
+            let args = msg.content.split(" ").slice(1);
+              if(msg.content.startsWith(prefix + 'ccc')) {
+              let textxt = args.slice(0).join("");
+              if(msg.member.hasPermission("MANAGE_MESSAGES")) {
+              if (textxt == ""){ return msg.channel.bulkDelete(50).then (msg.channel.send("**Done Delete Messages | ✅**"))
+          } else {
+              msg.delete().then
+              msg.delete().then
+              msg.channel.bulkDelete(textxt);
+                  msg.channel.send(`**Done Delete ${textxt} Messages | :white_check_mark:**`).then(m => m.delete(3000));
+                  }    
+              }
+          }
+          });
+
+client.on('message', message => {
+        
+    if(message.content.startsWith(prefix + 'وقت')) {
+          let args = message.content.split(' ').slice(1);
+   let Timer = args[0]; 
+ 
+   if(!args[0]){
+     return message.channel.send("من فضلك , قم بكتابتة بـ s,m,h "); 
+   }
+ 
+   if(message[0] <= 0){ 
+     return message.channel.send("من فضلك , قم بكتابتة بـ s,m,h ");  
+   }
+ 
+   message.channel.send(`**✅ | بدأ العدد الزمني : \`${ms(ms(Timer), {long: true})}\`.**`)  
+   setTimeout(function(){
+     message.channel.send(`** ${message.author} الوقت الزمني انتهى من :\`${ms(ms(Timer), {long: true})}\`.**`) 
+   }, ms(Timer)); 
+ 
+     } 
+ });
+
 client.login(process.env.TOKEN);
