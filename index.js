@@ -1719,19 +1719,6 @@ if (message.content.startsWith(prefix + 'trans')) {
     });
 
 
-client.on('message', message => {
-    if (message.content === ('!mybot')) {
-    message.channel.send({
-        embed: new Discord.RichEmbed()
-            .setColor('RANDOM')
-            .addField('**Servers🌐**',`__ ${client.guilds.size} __ `)
-           .addField('**Users👥**',`__ ${client.users.size} __`)
-             .addField('**Channels📚**',`__ ${client.channels.size} __`)
-    })
-}
-}); 
-
-
 client.on('message', message => {  
  var guild = message.guild;
          if (message.content.startsWith(prefix + "love")) {
