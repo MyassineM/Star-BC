@@ -1789,26 +1789,5 @@ client.on('message', message => {
       }
       
   });
-	
-client.on('message',message =>{
-  var prefix = "!"
-  var command = message.content.toLowerCase().split(" ")[0];
-    var args = message.content.toLowerCase().split(" ");
-    var userM = message.mentions.users.first()
-    if(command == prefix + 'unban') {
-        if(!message.member.hasPermission('BAN_MEMBERS')) return message.channel.send('**⛔ | You dont have **BAN_MEMBERS** Permission!**');
-        if(!message.guild.member(client.user).hasPermission("BAN_MEMBERS")) return message.channel.send('**⛔ | I dont have **BAN_MEMBERS** Permission!**');
-        if(!args[1]) return  message.channel.send('**ℹ  `#unban <@id>` يجب تحديد شخص**');
-        if(args[1].length < 16) return message.reply('**⛔ | This ID is not id user!**');
-        message.guild.fetchBans().then(bans => {
-            var Found = bans.find(m => m.id === args[1]);
-            if(!Found) return message.channel.send(`**:no_entry: | <@${message.author.id}> This preson not have any ban from this server! :unlock:**`);
-            message.guild.unban(args[1]);
-            message.channel.send(`**:white_check_mark: Successfully unban <@${args[1]}> From the server!**`);
-            }
- 
-        )}
-      });
-	
 
 client.login(process.env.TOKEN);
