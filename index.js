@@ -1890,7 +1890,7 @@ client.on('message', message => {
         })
         })
     }
-})
+});
 
 client.on('message', message => {  /// by KillerFox in Alpha Codes
     if (message.content == "!ضرب") {  /// by KillerFox in Alpha Codes
@@ -1938,7 +1938,7 @@ client.on('message', message => {  /// by KillerFox in Alpha Codes
         })
         })
     }
-})
+});
 
 client.on('message', message => {  /// by KillerFox in Alpha Codes
     if (message.content == "!طرح") {  /// by KillerFox in Alpha Codes
