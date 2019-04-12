@@ -1719,130 +1719,563 @@ if (message.content.startsWith(prefix + 'trans')) {
     });
 	
 	
+const dateFormat = require('dateformat');
+var Canvas = require('canvas')//لاتنسى البكجات!!
+var jimp = require('jimp')
+var moment = require("moment");
+
+
 client.on('message', message => {
-    if(message.content == ('!profile')) {    
- 
-             if (message.channel.type === 'dm') return message.reply('This Command Is Not Avaible In Dm\'s :x:');   
-            var Canvas = module.require('canvas');
-            var jimp = module.require('jimp');
-    
-     const w = ['ID1.png','ID2.png','ID3.png','ID4.png','ID5.png'];
-    
-             let Image = Canvas.Image,
-                 canvas = new Canvas(802, 404),
-                 ctx = canvas.getContext('2d');
-             ctx.patternQuality = 'bilinear';
-             ctx.filter = 'bilinear';
-             ctx.antialias = 'subpixel';
-             ctx.shadowColor = 'rgba(0, 0, 0, 0.4)';
-             ctx.shadowOffsetY = 2;
-             ctx.shadowBlur = 2;
-             fs.readFile(`${w[Math.floor(Math.random() * w.length)]}`, function (err, Background) {
-                 if (err) return console.log(err);
-                 let BG = Canvas.Image;
-                 let ground = new Image;
-                 ground.src = Background;
-                 ctx.drawImage(ground, 0, 0, 802, 404);
-    
-     })
-                                let user = message.mentions.users.first();
-          var men = message.mentions.users.first();
-             var heg;
-             if(men) {
-                 heg = men
-             } else {
-                 heg = message.author
-             }
-           var mentionned = message.mentions.members.first();
-              var h;
-             if(mentionned) {
-                 h = mentionned
-             } else {
-                 h = message.member
-             }
-             var ment = message.mentions.users.first();
-             var getvalueof;
-             if(ment) {
-               getvalueof = ment;
-             } else {
-               getvalueof = message.author;
-             }//ما خصك ,_,
-                                           let url = getvalueof.displayAvatarURL.endsWith(".webp") ? getvalueof.displayAvatarURL.slice(5, -20) + ".png" : getvalueof.displayAvatarURL;
-                                             jimp.read(url, (err, ava) => {
-                                                 if (err) return console.log(err);
-                                                 ava.getBuffer(jimp.MIME_PNG, (err, buf) => {
-                                                     if (err) return console.log(err);
-                            
-                                                             let Avatar = Canvas.Image;
-                                                             let ava = new Avatar;
-                                                             ava.src = buf;
-                                                             ctx.beginPath();
-                                                           ctx.drawImage(ava, 335, 3, 160, 169);
-                                                     ctx.font = '35px Arial Bold';
-                                                     ctx.fontSize = '40px';
-                                                     ctx.fillStyle = "#dadada";
-                                                     ctx.textAlign = "center";
-                                                    
-                            
-                                                     ctx.font = '30px Arial Bold';
-                                                     ctx.fontSize = '30px';
-                                                     ctx.fillStyle = "#ffffff";
-                                                                             ctx.fillText(`${getvalueof.username}`,655, 170);
-                                                                            
-                                                                        
-                                                          moment.locale('ar-ly');        
-                                            
-                                            
-                                                                    ctx.font = '30px Arial';
-                                                     ctx.fontSize = '30px';
-                                                     ctx.fillStyle = "#ffffff";
-                                                                             ctx.fillText(`${moment(h.joinedAt).fromNow()}`,150, 305);
-                                                              
-                                                              
-                                                                                                     ctx.font = '30px Arial';
-                                                     ctx.fontSize = '30px';
-                                                     ctx.fillStyle = "#ffffff";
-                                                                 ctx.fillText(`${moment(heg.createdTimestamp).fromNow()}`,150, 170); 
-                            
-                                                       let status;
-     if (getvalueof.presence.status === 'online') {
-         status = 'Online';
-     } else if (getvalueof.presence.status === 'dnd') {
-         status = 'dnd';
-     } else if (getvalueof.presence.status === 'idle') {
-         status = 'idle';
-     } else if (getvalueof.presence.status === 'offline') {
-         status = 'offline';
-     }
-     
-     
-                                          ctx.cont = '35px Arial';
-                                          ctx.fontSize = '30px';
-                                          ctx.filleStyle = '#ffffff'
-                                          ctx.fillText(`${status}`,655,305)
+
+    if(message.content.startsWith(prefix + 'id')) {
+if(!message.channel.guild) return;
+      var args = message.content.split(" ").slice(1);
+      let user = message.mentions.users.first();
+      var men = message.mentions.users.first();
+         var heg;
+         if(men) {
+             heg = men
+         } else {
+             heg = message.author
+         }
+       var mentionned = message.mentions.members.first();
+          var h;
+         if(mentionned) {
+             h = mentionned
+         } else {
+             h = message.member
+         }
+  moment.locale('ar');
+    const w = ['/idرقم الصورة.png']
+        let Image = Canvas.Image,
+            canvas = new Canvas(500, 500),
+            ctx = canvas.getContext('2d');
+        ctx.patternQuality = 'bilinear';
+        ctx.filter = 'bilinear';
+        ctx.antialias = 'subpixel';
+        ctx.shadowColor = 'rgba(0, 0, 0, 0)';
+        ctx.shadowOffsetY = 2;
+        ctx.shadowBlur = 2;
+        fs.readFile(`${w[Math.floor(Math.random() * w.length)]}`, function (err, Background) {
+            if (err) return console.log(err);
+            let BG = Canvas.Image;
+            let ground = new Image;
+            ground.src = Background;
+            ctx.drawImage(ground, 0, 0, 500, 500);
+
+})
+                let url = h.user.displayAvatarURL.endsWith(".webp") ? h.user.displayAvatarURL.slice(5, -20) + ".png" : h.user.displayAvatarURL;
+                jimp.read(url, (err, ava) => {
+                    if (err) return console.log(err);
+                    ava.getBuffer(jimp.MIME_PNG, (err, buf) => {
+                        if (err) return console.log(err);
+  //time dateformet
+  const millis = new Date().getTime() - h.user.createdAt.getTime();
+  const now = new Date();
+  dateFormat(now, 'dddd, mmmm dS, yyyy');
+  const stats2 = ['online', 'Low', 'Medium', 'Insane'];
+  const days = millis / 1000 / 60 / 60 / 24;
+            dateFormat(now, 'dddd, mmmm dS, yyyy');
+            
+        
+                          //دخولك الديسكورد
+                          var day = `منذ ${days.toFixed(0)} يوم`
+                          ctx.font = '27px Arial Bold';نوع الخط
+                          ctx.fontSize = '30px';
+                          ctx.fillStyle = "#ffffff";
+                          ctx.textAlign = "center";
+                          ctx.fillText(day, 109, 97)
+              //wl
+              var millis1;
+        if(mentionned){
+            var millis1 = new Date().getTime() - mentionned.joinedAt
+        } else {
+            var millis1 = new Date().getTime() - moment(message.member.joinedAt);;
+            
+        }
+
+  const days1 = millis1 / 1000 / 60 / 60 / 24;
+  
+                        //دخولك السيرفر
+                        var day2 = `منذ ${days1.toFixed(0)} يوم`
+                        ctx.font = '27px Arial Bold';//نوع الخط
+                        ctx.fontSize = '20px';
+                        ctx.fillStyle = "#ffffff";//اللون
+                        ctx.textAlign = "center";
+                        ctx.fillText(day2, 388, 97); 
+
+                        //ur name
+                        ctx.font = '27px BlowBrush';//نوع الخط
+                        ctx.fontSize = '30px';//الحجم
+                        ctx.fillStyle = "#FFFFFF";//اللون
+                        ctx.textAlign = "center";
+                        ctx.fillText(h.user.username, 245, 365);
+                        //tag
+                        ctx.font = '27px Arial Bold';//نوع الخط
+                        ctx.fontSize = '45px';
+                        ctx.fillStyle = "#ffffff";//اللون
+                        ctx.textAlign = "center";
+                        ctx.fillText(`#${heg.discriminator}`, 120, 450);
+                        
+                        //حالتك
+                           let status;
+    if (h.presence.status === 'online') {
+        status = 'اون لاين';
+    } else if (h.presence.status === 'dnd') {
+        status = 'مشغول';
+    } else if (h.presence.status === 'idle') {
+        status = 'خمول';
+    } else if (h.presence.status === 'offline') {
+        status = 'اوف لاين';
+    }
+                        ctx.font = '27px Arial Bold';نوع الخط
+                        ctx.fontSize = '30px';
+                        ctx.fillStyle = "#ffffff";//اللون
+                        ctx.textAlign = "center";
+                        ctx.fillText(`${status}`, 380, 450);
+                        
+                        //Avatar
+                        let Avatar = Canvas.Image;
+                        let ava = new Avatar;
+                        ava.src = buf;
+                        ctx.beginPath();
+                        ctx.arc(250, 238, 64, 0, Math.PI*2, true); 
+                        ctx.closePath();
+                        ctx.clip();
+                        ctx.drawImage(ava, 185, 172, 130, 130 );
+                         
+     message.channel.sendFile(canvas.toBuffer())
+})
+   })
+
+} });
+
+client.on('message', message => {
+    if (message.content == "!جمع") { /// by KillerFox in Alpha Codes
+        var x = ["212+212=?",
+"321+43=?",
+"4534+23",
+"23+3434=?",
+"2311+32=?",
+"765+343=?",
+"343+1121=?",
+"43234+1=?",
+"10000000000+2=?",
+"232+21=?",
+"12+23=?",                 
+];
+        var x2 = ['424',
+        "364",
+        "4557",
+        "3457",
+		"2343",
+		"1108",
+    "1464",
+    "43235",
+   "10000000002",
+  "253",
+  "35",
                   
-                                                                   ctx.font = 'regular 30px Cairo';
-                                                                   ctx.fontSize = '30px';
-                                                                   ctx.fillStyle = '#ffffff'
-                                                         ctx.fillText(`${h.presence.game === null ? "No playing" : h.presence.game.name}`,390,390);
-                            
-                               ctx.font = '35px Arial';
-                                                                   ctx.fontSize = '30px';
-                                                                   ctx.fillStyle = '#ffffff'
-                                                                   ctx.fillText(`#${heg.discriminator}`,390,260)
-                            
-                                 ctx.beginPath();
-                                 ctx.stroke();
-                               message.channel.sendFile(canvas.toBuffer());
-                            
-                            
-                          
-                            
-                             })
-                            
-                             })
- }
+        ];
+        
+        var x3 = Math.floor(Math.random()*x.length)  /// by KillerFox in Alpha Codes
+        message.channel.send(` اول شخص يحل جمع : __**${x[x3]}**_
+لديك 15 ثانية للاجابة`).then(msg1=> {
+            var r = message.channel.awaitMessages(msg => msg.content == x2[x3], {
+                maxMatches : 1,
+                time : 15000,
+                errors : ['time']
+            })
+        r.catch(() => {  /// by KillerFox in Alpha Codes
+            return message.channel.send(`:negative_squared_cross_mark: لقد انتهى الوقت ولم يقم أحد بالأجابة بشكل صحيح 
+            الإجآبة الصحيحةة هي __**${x2[x3]}**__`)  /// by KillerFox in Alpha Codes
+        })
+        
+        r.then((collected)=> {  /// by KillerFox in Alpha Codes
+            message.channel.send(`${collected.first().author} لقد قمت بحل جمع في الوقت المناسب  `);
+        })
+        })
+    }
+})
+
+client.on('message', message => {  /// by KillerFox in Alpha Codes
+    if (message.content == "!ضرب") {  /// by KillerFox in Alpha Codes
+        var x = ["9x9=?",
+"8x9=?",
+"4x4=?",
+"2x22=?",
+"12x2=?",
+"7x7=?",
+"5x5=?",
+"9x3=?",
+"2342432x0=?",
+"21321x1=?",
+"3x4x5=?",
+];
+        var x2 = ['81',
+        "72",
+        "16",
+        "42",
+		"22",
+		"49",
+		"25",
+		"27",
+    "0",
+    "21321",
+    "60",
+        
+        ];
+        
+        var x3 = Math.floor(Math.random()*x.length)  /// by KillerFox in Alpha Codes
+        message.channel.send(`  اول شخص يحل ضرب :  __**${x[x3]}**__
+لديك 15 ثانية لحل ضرب`).then(msg1=> {
+            var r = message.channel.awaitMessages(msg => msg.content == x2[x3], {
+                maxMatches : 1,
+                time : 15000,
+                errors : ['time']  /// by KillerFox in Alpha Codes
+            })
+        r.catch(() => {  /// by KillerFox in Alpha Codes
+            return message.channel.send(`:negative_squared_cross_mark: لقد انتهى الوقت ولم يقم أحد بالأجابة بشكل صحيح 
+            الإجآبة الصحيحةة هي __**${x2[x3]}**__`)  /// by KillerFox in Alpha Codes
+        })
+        
+        r.then((collected)=> {
+            message.channel.send(`${collected.first().author}لقد قمت بكتابة حل  في الوقت المناسب  `);
+        })
+        })
+    }
+})
+
+client.on('message', message => {  /// by KillerFox in Alpha Codes
+    if (message.content == "!طرح") {  /// by KillerFox in Alpha Codes
+        var x = ["4326-2345=?",
+"5822-8547=?",
+"543-823=?",
+"1500-500=?",
+"4322-2768=?",
+"5652-1255=?",
+"3421-11234=?",
+"34545-1233=?",
+"23456-54332=?",
+"2312-3433=?",
+"4321-321=?",
+];
+        var x2 = ['1981',
+        "-2725",
+        "-280",
+        "1000",
+"1554",
+"4397",
+"-7813",
+"33312",
+"-30876",
+"1121",
+"4000",
+
+        
+        ];
+        
+        var x3 = Math.floor(Math.random()*x.length)
+        message.channel.send(`  اول شخص يكتب حل صح :  __**${x[x3]}**__
+لديك 15 ثانية لكتابة حل صحيح`).then(msg1=> {
+            var r = message.channel.awaitMessages(msg => msg.content == x2[x3], {  /// by KillerFox in Alpha Codes
+                maxMatches : 1,
+                time : 15000,
+                errors : ['time']
+            })
+        r.catch(() => {
+            return message.channel.send(`:negative_squared_cross_mark: لقد انتهى الوقت ولم يقم أحد بالأجابة بشكل صحيح 
+            الإجآبة الصحيحةة هي __**${x2[x3]}**__`)
+        })
+        
+        r.then((collected)=> {
+            message.channel.send(`${collected.first().author}لقد قمت بكتابة حل في الوقت المناسب  `);
+        })
+        })
+    }
+});
+
+client.on('message', message => {
+    if (message.content == "!عواصم"){
+        var x = ["ما عاصمة **المغرب**",
+    "ما عاصمة **افغانستان**",
+    "ما عاصمة **الجزائر **",
+    "ما عاصمة **الارجنتين",
+    "ما عاصمة ** مصر**",
+    "ما عاصمة ** استراليا**",
+    "ما عاصمة ** البرازيل**",
+    "ما عاصمة **قطر  **",
+    "ما عاصمة **السعودية  **",
+    "ما عاصمة **سوريا  **",
+    "ما عاصمة **تركيا  **",
+    "ما عاصمة **العراق  **",
+    "ما عاصمة **لبنان  **",
+    "ما عاصمة **فلسطين  **",
+    "ما عاصمة **امريكا  **",
+   "ما عاصمة **كندا  **",
+   "ما عاصمة **البرازيل  **",
+];
+        var x2 = ['الرباط',
+        "كابل",
+        "الجزائر",
+      "بوينس ايرس",
+"القاهرة",
+"كانبرا",
+"برازيليا",
+"الدوحة",
+      "الرياض",
+      "دمشق",
+      "انقرة",
+    "بغداد",
+      "بيروت",
+    "القدس",
+  "وشنطن",
+    "اوتاوا",
+  "برازيليا",
+  
+        
+        ];
+        
+        var x3 = Math.floor(Math.random()*x.length)  /// by KillerFox in Alpha Codes
+        message.channel.send(` اول شخص يكتب عاصمة صح :  __**${x[x3]}**__
+لديك 20 ثانية لكتابة عاصمة صحيحة`).then(msg1=> {
+            var r = message.channel.awaitMessages(msg => msg.content == x2[x3], {  /// by KillerFox in Alpha Codes
+                maxMatches : 1,
+                time : 20000,
+                errors : ['time']
+            })
+        r.catch(() => {
+            return message.channel.send(`:negative_squared_cross_mark: لقد انتهى الوقت ولم يقم أحد بالأجابة بشكل صحيح 
+            الإجآبة الصحيحةة هي __**${x2[x3]}**__`)
+        })
+        
+        r.then((collected)=> {
+            message.channel.send(`${collected.first().author}لقد قمت بكتابة عاصمة صح في الوقت المناسب  `);
+        })
+        })
+    }
+});
+
+client.on('message', function(msg) {
+         let verifLevels = ["None", "Low", "Medium", "(╯°□°）╯︵  ┻━┻", "┻━┻ミヽ(ಠ益ಠ)ノ彡┻━┻"];
+         let region = {
+    "brazil": "Brazil",
+    "eu-central": "Central Europe",
+    "singapore": "Singapore",
+    "Russia": "Russia",
+    "us-central": "U.S. Central",
+    "sydney": "Sydney",
+    "us-east": "U.S. East",
+    "us-south": "U.S. South",
+    "us-west": "U.S. West",
+    "eu-west": "Western Europe",
+    "vip-us-east": "VIP U.S. East",
+    "london": "London",
+     "amsterdam": "Amsterdam",
+     "hongkong": "Hong Kong"
+                        };
+                      
+                          if (msg.content.startsWith(prefix + '!ourserver')) {
+                          if (!msg.guild) return message.reply('**Only Servers | ❌**')
+                          let embed = new Discord.RichEmbed()
+    .setColor('RANDOM')
+    .setThumbnail(msg.guild.iconURL)
+    .setTitle(`${msg.guild.name} Detalis || :clipboard:`)
+    .addField('**» Server Owner Ship**',`**${msg.guild.owner}**`,true)
+    .addField('**» Server ID**',`**${msg.guild.id}**`,true)
+    .addField('**» Member Count**',`[** __${msg.guild.memberCount}__ **]`,true)
+    .addField('**» Verification Level**',`[** __${verifLevels[msg.guild.verificationLevel]}__** ]`,true)
+    .addField('**» Region**',`[** __${region[msg.guild.region]}__** ]`,true)
+    .addField('**» Text Channels**',`[** __${msg.guild.channels.filter(m => m.type === 'text').size}__** ]`,true)
+    .addField('**» Voice Channels**',`[** __${msg.guild.channels.filter(m => m.type === 'voice').size}__ **]`,true)
+    .addField('**» Created AT**',msg.guild.createdAt.toLocaleString())
+    .setFooter("Ultra Bot")
+msg.channel.send({embed:embed});
+}
  });
 
+client.on('message', msg => {
+            if (msg.author.bot) return;
+            let args = msg.content.split(" ").slice(1);
+              if(msg.content.startsWith(prefix + '!byec')) {
+              let textxt = args.slice(0).join("");
+              if(msg.member.hasPermission("MANAGE_MESSAGES")) {
+              if (textxt == ""){ return msg.channel.bulkDelete(50).then (msg.channel.send("**Done Delete Messages | ✅**"))
+          } else {
+              msg.delete().then
+              msg.delete().then
+              msg.channel.bulkDelete(textxt);
+                  msg.channel.send(`**Done Delete ${textxt} Messages | :white_check_mark:**`).then(m => m.delete(3000));
+                  }    
+              }
+          }
+          });
+
+function forEachObject(obj, func) {
+    Object.keys(obj).forEach(function (key) { func(key, obj[key]) })
+}
+const dot = new Discord.Client();
+client.on('message', message => {
+    
+    if (message.content === "Blood") {
+        setInterval(function(){
+        message.edit('B')    
+        message.edit('Bl')    
+        message.edit('Blo')
+        message.edit('Bloo')
+        message.edit('Blood')
+        message.edit('Blood S')
+        message.edit('Blood Ser')
+        message.edit('Blood Serv')
+        message.edit('Blood Server')
+        }, 1000)
+    }
+    
+});
+
+client.on('message', message => {
+    if (message.content === ('!mybot')) {
+    message.channel.send({
+        embed: new Discord.RichEmbed()
+            .setColor('RANDOM')
+            .addField('**Servers🌐**',`__ ${client.guilds.size} __ `)
+           .addField('**Users👥**',`__ ${client.users.size} __`)
+             .addField('**Channels📚**',`__ ${client.channels.size} __`)
+    })
+}
+}); 
+
+client.on('message', message => { // تعريف المسج
+    if(!stats[message.author.id+message.guild.id]) stats[message.author.id+message.guild.id] = { // اذا الستاتس من نفس الشخص ايدي , و مسج جيلد , ستاتس من  الشخص الي كتب الراسلة و مسج جيلد
+        bans: "0", // 0 حظر
+        warns: "0", // 0 انذار
+        mutes: "0" // 0 ميوت
+    }
+    let ryex = message.mentions.members.first();  // تعريف ريكس
+    let reason = message.content.split(" ").slice(2).join(" "); // تعريف الريسون
+    if(message.content.startsWith(prefix + "warn")){ // " اذا الرسالة بدأت بـ برفكس "انذار
+        if(!ryex) return message.reply(":x:  -  **Please Can You Meantion a User?!**"); // اذا ريكس مثل ماعرفنا فوق ، كتبها بدون منشن يقله منشن الشخص
+            message.delete(); // يحذف الرسالة
+        if(!reason) return message.reply(":x:  -  **Please Can You Type a Reason Efter Mention?!**"); // اذا ماكتب الريسون يرد عليه..
+            message.delete(); // تنحذف الرسالة
+        message.channel.send(`${ryex} was warned For: ${reason}`); // هنا الرسالة ترسل ..
+        message.delete(); // الرسالة تنحذف
+        stats[message.author.id+message.guild.id].warns++; // هنا يضيف وارن للشخص في معدل الستاتس حقه
+        fs.writeFile("./staff.json", JSON.stringify(stats), function(e){ // بـ ملف staff.json
+            if (e) throw e;
+        }); // تقفيله
+    } // تقفيله
+    if(message.content.startsWith(prefix + "mute")){ // اذا الرسالة  وصلت بدات بـ برفكس "mute"
+        if(!ryex) return message.reply(":x:  -  **Please Can You Mention a User?!**"); // اذا ريكس مثل ماعرفنا فوق ، كتبها بدون منشن يقله منشن الشخص
+            message.delete();  // يحذف الرسالة
+        if(!reason) return message.reply(":x:  -  **Please Can You Type a Reason Efter Mention?!**"); // اذا ماكتب الريسون يرد عليه,,
+            message.delete(); // يحذف الرسالة
+        message.channel.send(`${ryex} was muted for: ${reason}`).then(() => { // هتا الرسالة ترسل الريسون
+            ryex.addRole(r => r.name === "Muted"); // هنا يضيف له رتبة Muted.
+        }) // تقفيله
+        message.delete(); // الرسالة تنحذف
+        stats[message.author.id+message.guild.id].mutes++; // هنا يضيف ميوت في معدل الستاتس حقه
+        fs.writeFile("./staff.json", JSON.stringify(stats), function(e){ // بـ ملف staff.json
+            if (e) throw e;
+        }); // تقفيله
+    } // تقفيله
+    if(message.content.startsWith(prefix + "ban")){ // اذا الرسالة وصلت بدأت بـ برفكس "ban"
+        if(!ryex) return message.reply(":x:  -  ** Please Can You Mention a User?!**"); // اذا ريكس مثل ماعرفنا فوق كتبها بدون منشن يقله منشن الشخص
+            message.delete(); // يحذف الرسالة
+        if(!reason) return message.reply(":x:  -  **Can You Type a Reason Efter a Mention?!**"); // اذا ماكتب الريسون يرد عليه ..
+            message.delete(); // يحذف الرسالة
+        message.channel.send(`${ryex} was banned for ${reason}`).then(() => { // هنا الرسالة ترسل الريسون
+            ryex.ban(); // وهنا يبنده
+        }) // تقفيله
+        message.delete(); // يحذف الرسالة
+        stats[message.author.id+message.guild.id].bans++; // هنا يضيف بان بـ معدل الستاتس حقه
+        fs.writeFile("./staff.json", JSON.stringify(stats), function(e){ // بـ ملف staff.json
+            if (e) throw e;
+        }); // تقفيله
+    } // تقفيله
+    if(message.content.startsWith(prefix + "mystats")){ // هنا اذا الرسالة وصلت بدأت بـ برفكس "mystats"
+        message.reply(`You have been banned **` + stats[message.author.id+message.guild.id].bans + "** users!\n You have been muted **" + stats[message.author.id+message.guild.id].mutes + "** user \n You have been warned **"+ [message.author.id+message.guild.id].warns + "** users!"); // يرد عليه و يقله انه انت عاطي هاذا العدد من الوارن و هاذا العدد من الميوت و الوران
+    } // تقفيله
+}); //تقفيله الكود
+
+client.on("guildMemberAdd", member => {
+  let welcome = member.guild.channels.find("name","chat");
+  if(!welcome) return;
+  if(welcome) {
+      let embed = new Discord.RichEmbed()
+      .setColor("RANDOM")
+      .setThumbnail(member.user.avatarURL)  
+      .setAuthor(member.user.username , member.user.avatarURL)
+      .addField("**Welcome To**", `[${member.guild.name}]`, true)
+      .addField(`**Number**`, `[${member.guild.memberCount}]`, true)
+      .addField("**Name**", `[${member.user.username}#${member.user.discriminator}]`,true)
+      .addField("**ID**", `[${member.user.id}]`, true)
+      .addField('**Created AT**',`${moment(member.user.createdAt).format('D/M/YYYY h:mm a')}**n** `${moment(member.user.createdAt).fromNow()}``,true)            
+      .addField("**Joined At**",`${moment(member.user.joinedAt).format('D/M/YYYY h:mm a')}**n** `${moment(member.user.joinedAt).fromNow()}``,true)    
+      welcome.send(embed)
+
+  }
+  });
+  
+client.on('message', message => {  
+ var guild = message.guild;
+         if (message.content.startsWith(prefix + "love")) {
+          const embed = new Discord.RichEmbed()
+          .setColor('0x7f10d3')
+          .setDescription(` ${message.author} sent a :heart: to ${message.mentions.users.first()}`)    
+          message.channel.send({ embed });  
+        });
+	
+client.on('message', message => {
+    if(message.content.startsWith(prefix + 'ip')) {
+   const args = message.content.split(" ")
+   const ip = args[1]
+   const port = args[2]
+      if(!ip) return message.channel.send("** Write Server IP **");
+      if(!port){
+          let embed = new Discord.RichEmbed()
+          .setColor('#642EFE')
+          .setThumbnail(`https://api.minetools.eu/favicon/${ip}/25565`) 
+          .addField("📜 Server NIP",`${ip}`,true)
+          .addField("🌐 Server Port",`No PorT`)
+          .setImage(`http://status.mclive.eu/${ip}/${ip}/25565/banner.png`) 
+          .setFooter(`KingBoT`)
+          .setTimestamp()
+      message.channel.send(embed)
+      }
+      if(port){
+          let rembed = new Discord.RichEmbed()
+          .setColor('#642EFE')
+          .setThumbnail(`https://api.minetools.eu/favicon/${ip}/${port}`) 
+          .addField("📜 Server NIP",`${ip}`,true)
+          .addField("🌐 Server Port",`${port}`, true)
+          .setImage(`http://status.mclive.eu/${ip}/${ip}/${port}/banner.png`) 
+          .setFooter(`KingBoT`)
+                  .setTimestamp()
+      message.channel.send(rembed)
+      }
+      
+  });
+	
+client.on('message',message =>{
+  var prefix = "!"
+  var command = message.content.toLowerCase().split(" ")[0];
+    var args = message.content.toLowerCase().split(" ");
+    var userM = message.mentions.users.first()
+    if(command == prefix + 'unban') {
+        if(!message.member.hasPermission('BAN_MEMBERS')) return message.channel.send('**⛔ | You dont have **BAN_MEMBERS** Permission!**');
+        if(!message.guild.member(client.user).hasPermission("BAN_MEMBERS")) return message.channel.send('**⛔ | I dont have **BAN_MEMBERS** Permission!**');
+        if(!args[1]) return  message.channel.send('**ℹ  `#unban <@id>` يجب تحديد شخص**');
+        if(args[1].length < 16) return message.reply('**⛔ | This ID is not id user!**');
+        message.guild.fetchBans().then(bans => {
+            var Found = bans.find(m => m.id === args[1]);
+            if(!Found) return message.channel.send(`**:no_entry: | <@${message.author.id}> This preson not have any ban from this server! :unlock:**`);
+            message.guild.unban(args[1]);
+            message.channel.send(`**:white_check_mark: Successfully unban <@${args[1]}> From the server!**`);
+            }
+ 
+        )}
+      });
+	
 
 client.login(process.env.TOKEN);
