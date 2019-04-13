@@ -2125,5 +2125,156 @@ message.react("❌")
 });//toxic codes
 
 
+client.on('message', message => {
+          
 
+           if (message.content.startsWith(prefix + "id")) {
+           if (message.channel.id !== "ايدي الروم الي تبي فيه الامر") return;
+            
+            if(!message.channel.guild) return message.reply(`هذا الأمر فقط ل السيرفرات ❌`);
+
+                message.guild.fetchInvites().then(invs => {
+      let member = client.guilds.get(message.guild.id).members.get(message.author.id);
+      let personalInvites = invs.filter(i => i.inviter.id === message.author.id);
+      let inviteCount = personalInvites.reduce((p, v) => v.uses + p, 0);
+      var moment = require('moment');
+      var args = message.content.split(" ").slice(1);
+let user = message.mentions.users.first();
+var men = message.mentions.users.first();
+ var heg;
+ if(men) {
+     heg = men
+ } else {
+     heg = message.author
+ }
+var mentionned = message.mentions.members.first();
+  var h;
+ if(mentionned) {
+     h = mentionned
+ } else {
+     h = message.member
+ }
+        moment.locale('ar-TN');
+      var id = new  Discord.RichEmbed()
+       
+    .setColor("#0a0909")
+ .setThumbnail(message.author.avatarURL)
+.addField(': تاريخ دخولك للديسكورد',` \`${moment(heg.createdTimestamp).format('YYYY/M/D HH:mm:ss')} \`**\n ${moment(heg.createdTimestamp).fromNow()}**` ,true) 
+.addField(': تاريخ دخولك لسيرفرنا', `\`${moment(h.joinedAt).format('YYYY/M/D HH:mm:ss')}  \` **\n ${moment(h.joinedAt).fromNow()} **`, true)
+.addField(` :لقد قمت بدعوة `, ` ${inviteCount} `)
+
+
+.setFooter(message.author.username, message.author.avatarURL)  
+    message.channel.sendEmbed(id);
+})
+}
+    
+
+         
+     });
+
+client.on('message', message => {
+    if (message.content.startsWith("!bans")) {
+        message.guild.fetchBans()
+        .then(bans => message.channel.send(${bans.size} عدد اشخاص المبندة من السيرفر))
+  .catch(console.error);
+}
+});
+
+client.on('message', message => { //-MaX PicAssO#8266 codes©
+  if (message.content === "!iid") {
+  let embed = new Discord.RichEmbed()//-MaX PicAssO#8266 codes©
+.setThumbnail(message.author.avatarURL)  
+.setAuthor(message.author.username)//-MaX PicAssO#8266 codes©
+.setDescription("**معلومات عن الحــساب**")
+            .setFooter(`-MaX PicAssO#8266.©`, 'codes.©')//-MaX PicAssO#8266 codes©
+.setColor("#9B59B6")
+.addField("**اســـم الحســاب**", `${message.author.username}`)//-MaX PicAssO#8266 codes©
+.addField('**تاق الحساب الخاص**', message.author.discriminator)
+.addField("**الرقـــم الشـــخصي**", message.author.id)//-MaX PicAssO#8266 codes©
+.addField('**بــــوت**', message.author.bot)
+.addField("**تاريخ التسجيل**", message.author.createdAt)//-MaX PicAssO#8266 codes©
+  //-MaX PicAssO#8266 codes©
+
+message.channel.sendEmbed(embed);
+ }
+});//تبغى تنشره حط حقوق كودز💙©
+
+
+client.on('message', async message => {
+if(message.author.bot) return;
+if (message.channel.guild) {
+if (message.content === '-myV') {
+message.channel.send(`Your XP : ${voice[message.member.id].xp}
+Your Level : ${voice[message.member.id].level}`);
+      fs.writeFile('./voiceState.json', JSON.stringify(voice, null, 4), (e) => {
+        if(e) console.log(e);
+      });
+});
+
+client.on('message' , async (message) => {
+ if (message.content.startsWith(prefix + 'yn')) {
+
+let color = '0xffffff'
+
+      const { body } = await superagent
+    .get('https://yesno.wtf/api/');
+    if(body.answer === 'yes') color = '0x01DF01';
+    if(body.answer === 'no') color = '0xFF0000';
+    const embed = new Discord.RichEmbed()
+    .setColor(color)
+    .setImage(`${body.image}`)
+    message.channel.send(`**The magic API says:** **${body.answer}**`, {embed});
+
+}
+});
+
+client.on('message' , message => {
+if(message.content === '!voice') {
+    message.channel.send(`**عدد الاشخاص الموجودين بـ  الرومات الصوتيه : ${message.guild.members.filter(g => g.voiceChannel).size}**`);
+}
+});
+	
+client.on("message", function(message) {
+	var prefix = "!";
+   if(message.content.startsWith(prefix + "rps")) {
+    let messageArgs = message.content.split(" ").slice(1).join(" ");
+    let messageRPS = message.content.split(" ").slice(2).join(" ");
+    let arrayRPS = ['**# - Rock**','**# - Paper**','**# - Scissors**'];
+    let result = `${arrayRPS[Math.floor(Math.random() * arrayRPS.length)]}`;
+    var RpsEmbed = new Discord.RichEmbed()
+    .setAuthor(message.author.username)
+    .setThumbnail(message.author.avatarURL)
+    .addField("Rock","🇷",true)
+    .addField("Paper","🇵",true)
+    .addField("Scissors","🇸",true)
+    message.channel.send(RpsEmbed).then(msg => {
+        msg.react(' 🇷')
+        msg.react("🇸")
+        msg.react("🇵")
+.then(() => msg.react('🇷'))
+.then(() =>msg.react('🇸'))
+.then(() => msg.react('🇵'))
+let reaction1Filter = (reaction, user) => reaction.emoji.name === '🇷' && user.id === message.author.id;
+let reaction2Filter = (reaction, user) => reaction.emoji.name === '🇸' && user.id === message.author.id;
+let reaction3Filter = (reaction, user) => reaction.emoji.name === '🇵' && user.id === message.author.id;
+let reaction1 = msg.createReactionCollector(reaction1Filter, { time: 12000 });
+	    
+let reaction2 = msg.createReactionCollector(reaction2Filter, { time: 12000 });
+let reaction3 = msg.createReactionCollector(reaction3Filter, { time: 12000 });
+reaction1.on("collect", r => {
+        message.channel.send(result)
+})
+reaction2.on("collect", r => {
+        message.channel.send(result)
+})
+reaction3.on("collect", r => {
+        message.channel.send(result)
+})
+
+    })
+}
+});
+
+	
 client.login(process.env.TOKEN);
