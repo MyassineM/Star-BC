@@ -2153,33 +2153,6 @@ message.channel.sendEmbed(embed);
 });//تبغى تنشره حط حقوق كودز💙©
 
 
-client.on('message', async message => {
-if(message.author.bot) return;
-if (message.channel.guild) {
-if (message.content === '!myV') {
-message.channel.send(`Your XP : ${voice[message.member.id].xp}
-Your Level : ${voice[message.member.id].level}`);
-      fs.writeFile('./voiceState.json', JSON.stringify(voice, null, 4), (e) => {
-        if(e) console.log(e);
-      });
-
-client.on('message' , async (message) => {
- if (message.content.startsWith(prefix + 'yn')) {
-
-let color = '0xffffff'
-
-      const { body } = await superagent
-    .get('https://yesno.wtf/api/');
-    if(body.answer === 'yes') color = '0x01DF01';
-    if(body.answer === 'no') color = '0xFF0000';
-    const embed = new Discord.RichEmbed()
-    .setColor(color)
-    .setImage(`${body.image}`)
-    message.channel.send(`**The magic API says:** **${body.answer}**`, {embed});
-
-}
-});
-
 client.on('message' , message => {
 if(message.content === '!voice') {
     message.channel.send(`**عدد الاشخاص الموجودين بـ  الرومات الصوتيه : ${message.guild.members.filter(g => g.voiceChannel).size}**`);
