@@ -2028,4 +2028,102 @@ client.on('message', message => {
      } 
  });
 
+client.on('message', message => {
+  if (!message.guild) return;
+
+  if (message.content.startsWith('!kick')) {
+    const user = message.mentions.users.first();
+    if (user) {
+      const member = message.guild.member(user);
+      if (member) {
+        member.kick('Optional reason that will display in the audit logs').then(() => {
+          message.reply(`Successfully kicked ${user.tag}`);
+        }).catch(err => {
+          message.reply('I was unable to kick the member');
+          console.error(err);
+        });
+      } else {
+        message.reply('That user isn\'t in this guild!');
+      }
+    } else {
+      message.reply('You didn\'t mention the user to kick!');
+    }
+  }
+});
+
+client.on('message', message => {
+    if(message.content == '!BAS') {
+             if(!message.author.id === '436918120184021012') return;
+    var gimg;//Toxic Codes
+    var gname;//Toxic Codes
+    var gmemb;//Toxic Codes
+    var gbots;//Toxic Codes
+    var groles;//Toxic Codes
+    var servers = client.guilds;
+    servers.forEach((g)=>{//Toxic Codes
+    gname = g.name;//Toxic Codes
+    gimg = g.iconURL;//Toxic Codes
+    gmemb = g.members.size;//Toxic Codes
+    gbots = g.members.filter(m=>m.bot).size;
+    groles = g.roles.map(r=> {return r.name});//Toxic Codes
+    let serv = new Discord.RichEmbed()//Toxic Codes
+    .setAuthor(gname,gimg)
+    .setThumbnail(gimg)
+    .addField('Server bots',gbots)
+    .addField('Server Member Count',gmemb = g.members.size)
+    .setColor('RANDOM')
+    message.channel.send(`
+    Server Name : **${gname}**
+    Server MemberCount : **${gmemb} **
+            
+            `);//Toxic Codes
+          message.channel.sendEmbed(serv);
+    }) //Toxic Codes
+    }//Toxic Codes
+    }); //Toxic Codes
+
+client.on('message', message => { //Toxic Codes
+    if(message.content.startsWith('!vsay')) { //Toxic Codes
+    let args = message.content.split(' ').slice(1); //Toxic Codes
+    let ar = args.join(' '); //Toxic Codes
+
+    message.channel.send(ar,{tts:true});
+} //Toxic Codes
+}); //Toxic Codes
+
+client.on('message', message => {
+if(!message.channel.guild) return;
+if(message.content.startsWith(prefix + 'move')) {
+ if (message.member.hasPermission("MOVE_MEMBERS")) {
+ if (message.mentions.users.size === 0) {
+ return message.channel.send("``لاستخدام الأمر اكتب هذه الأمر : " +prefix+ "move [USER]``")
+}
+if (message.member.voiceChannel != null) {
+ if (message.mentions.members.first().voiceChannel != null) {
+ var authorchannel = message.member.voiceChannelID;
+ var usermentioned = message.mentions.members.first().id;
+var embed = new Discord.RichEmbed()
+ .setTitle("Succes!")
+ .setColor("#000000")
+ .setDescription(`لقد قمت بسحب <@${usermentioned}> الى الروم الصوتي الخاص بك✅ `)
+var embed = new Discord.RichEmbed()
+.setTitle(`You are Moved in ${message.guild.name}`)
+ .setColor("RANDOM")
+.setDescription(`**<@${message.author.id}> Moved You To His Channel!\nServer --> ${message.guild.name}**`)
+ message.guild.members.get(usermentioned).setVoiceChannel(authorchannel).then(m => message.channel.send(embed))
+message.guild.members.get(usermentioned).send(embed)
+} else {
+message.channel.send("``لا تستطيع سحب "+ message.mentions.members.first() +" `يجب ان يكون هذه العضو في روم صوتي`")
+}
+} else {
+ message.channel.send("**``يجب ان تكون في روم صوتي لكي تقوم بسحب العضو أليك``**")
+}
+} else {
+message.react("❌")
+}
+ }
+});//toxic codes
+
+
+
 client.login(process.env.TOKEN);
