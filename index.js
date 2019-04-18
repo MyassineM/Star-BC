@@ -2166,7 +2166,7 @@ client.on('message', message => {
    let args = message.content.split(" ").slice(1);
  
  
- if(command == "امر  الرسم") {
+ if(command == "رسم") {
      var Canvas = require('canvas')
    , Image = new Canvas.Image
    , canvas = new Canvas(450, 170)
@@ -2190,45 +2190,100 @@ client.on('message', message => {
  
  });
 	    
-client.on('message', function(message) {
-    if(!message.channel.guild) return;
-    if(message.content === 'cc') {
-    if(message.member.hasPermission('MANAGE_ROLES')) {
-    setInterval(function(){})
-    message.channel.send('يتم انشاء 50 لون انتضر | ▶️')
-    }else{
-    message.channel.send('ما معاك البرمشن المطلوب |❌🚫')
-    }
-    }
-    });
-    
-    client.on('message', message=>{
-    if (message.content === 'colors'){
-    if(!message.channel.guild) return;
-    if (message.member.hasPermission('MANAGE_ROLES')){
-    setInterval(function(){})
-    let count = 0;
-    let ecount = 0;
-    for(let x = 1; x < 50; x++){
-    message.guild.createRole({name:x,
-    color: 'RANDOM'})
-    }
-    }
-    }
-    }); //Toxic Codes
 
+
+	    
 client.on('message', function(message) {
-    if(!message.channel.guild) return;
-    if(message.content === 'cc') {
-    if(message.member.hasPermission('MANAGE_ROLES')) {
-    setInterval(function(){})
-    message.channel.send('يتم انشاء 50 لون انتضر | ▶️')
-    }else{
-    message.channel.send('ما معاك البرمشن المطلوب |❌🚫')
+    if(message.content.startsWith(prefix + 'crole')) {
+        let guild = message.mentions.members.first();
+                          let ZmA = new Discord.RichEmbed()
+                  .setColor('3fcf24')
+                  .setDescription('**__✅ تم إضافة رتبة الدعم الفني لك__**')
+        message.member.addRole(message.guild.roles.find('name', 'اسم الرتبه'));
+                    message.channel.send({embed:ZmA});
     }
+}); //Toxic Codes
+	    
+client.on('message', message => {    
+    var p = "!";
+            if (message.content.startsWith(p + "cto")) {
+                if(!message.channel.guild) return;
+                if (!message.member.hasPermission("MANAGE_CHANNEL"))  return;
+      var a= message.content.split(' ').slice(1).join("  ");
+      if (!a) return message.reply("اكتب كلام لوضعه في التوبيك!")
+      message.channel.setTopic(`${a}`)
+      .then(newChannel => message.channel.send(`تم تغيير التوبيك لـ **${a}**`))
+      .catch(console.error);
+            }
+        });//Toxic Codes
+	    
+client.on('message', message=>{
+    if (message.content ===  "!leave"){
+    message.guild.leave();
+            }
+}); //Toxic Codes
+	    
+client.on("message", (message) => {
+    if (message.content.startsWith("!ban")) {
+      if(!message.member.hasPermission('BAN_MEMBERS')) return message.reply('⚠ ماعندك الصلاحيات');
+        var member= message.mentions.members.first();
+        member.ban().then((member) => {
+            message.channel.send(member.displayName + " مع السلامه 👋 ");
+        }).catch(() => {
+            message.channel.send("Error -_-");
+        });
     }
-    });
+}); //Toxic Codes
+	    
+client.on('message', message => {
+    if (message.content.startsWith("!!id")) {
+                 if(!message.channel.guild) return message.reply('** This command only for servers**');
+ 
+                var mentionned = message.mentions.users.first();
+     var mentionavatar;
+       if(mentionned){
+           var mentionavatar = mentionned;
+       } else {
+           var mentionavatar = message.author;
+           
+       }
+    let embed = new Discord.RichEmbed()
+   .setColor("RANDOM")
+    .setThumbnail(`${mentionavatar.avatarURL}`)
+   .addField("Name:",`<@` + `${mentionavatar.id}` + `>`, true)
+   .addField('Discrim:',"#" +  `${mentionavatar.discriminator}`, true)
+    .addField("ID:", "**[" + `${mentionavatar.id}` + "]**", true)
+   .addField("Create At:", "**[" + `${mentionavatar.createdAt}` + "]**", true)
+      
+      
+   message.channel.sendEmbed(embed);
+   console.log('[id] Send By: ' + message.author.username)
+     }
+ }); //Toxic Codes
+	    
+client.on('message', message => {
+    // اذا كان الشخص بوت ماينفذ الامر
+    if (message.author.bot) return;
     
+    // `!`يتاكد ان الامر بدا بـ 
+    if (message.content.indexOf('!un') === 0) {
+        //  `!` ياخذ الرساله بس بدون الـ
+        var text = message.content.substring(1);
+        
+        // يعكس الكلام
+        var reversed = '';
+        var i = text.length;
+        
+        while (i > 0) {
+            reversed += text.substring(i - 1, i);
+            i--;
+        }
+        
+        // يرسله الرساله بالعكس مع المنشن
+        message.reply(reversed);
+    }
+}); /Toxic Codes   n3k4a
+
 
 	    
 client.login(process.env.TOKEN);
