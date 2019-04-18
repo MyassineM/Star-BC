@@ -2176,32 +2176,36 @@ client.on("message", (message) => {
             message.channel.send("Error -_-");
         });
 
-	    
 client.on('message', message => {
-    if (message.content.startsWith("!!id")) {
-                 if(!message.channel.guild) return message.reply('** This command only for servers**');
+    var prefix = "!"
+     let command = message.content.split(" ")[0];
+   command = command.slice(prefix.length);
  
-                var mentionned = message.mentions.users.first();
-     var mentionavatar;
-       if(mentionned){
-           var mentionavatar = mentionned;
-       } else {
-           var mentionavatar = message.author;
-           
-       }
-    let embed = new Discord.RichEmbed()
-   .setColor("RANDOM")
-    .setThumbnail(`${mentionavatar.avatarURL}`)
-   .addField("Name:",`<@` + `${mentionavatar.id}` + `>`, true)
-   .addField('Discrim:',"#" +  `${mentionavatar.discriminator}`, true)
-    .addField("ID:", "**[" + `${mentionavatar.id}` + "]**", true)
-   .addField("Create At:", "**[" + `${mentionavatar.createdAt}` + "]**", true)
-      
-      
-   message.channel.sendEmbed(embed);
-   console.log('[id] Send By: ' + message.author.username)
-     }
- }); //Toxic Codes
-	    
+   let args = message.content.split(" ").slice(1);
+ 
+ 
+ if(command == "رسم") {
+     var Canvas = require('canvas')
+   , Image = new Canvas.Image
+   , canvas = new Canvas(450, 170)
+   , ctx = canvas.getContext('2d');
+   ctx.font = '30px Impact';
+   let args = message.content.split(" ").slice(1);
+   
+ Image.src = canvas.toBuffer();
+ 
+     console.log(Image);
+ ctx.drawImage(Image, 0, 0, Image.width / 470, Image.height / 170);
+ ctx.fillText(args.join("  "),110, 70);
+ 
+ 
+ ctx.beginPath();
+ ctx.lineTo(50, 102);
+ ctx.stroke();
+ 
+ message.channel.sendFile(canvas.toBuffer());
+ }
+ 
+ });
 	    
 client.login(process.env.TOKEN);
