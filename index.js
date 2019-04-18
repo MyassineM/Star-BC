@@ -2158,51 +2158,7 @@ search(yt , opts, function(err, results) { // By Jake.#5635 and Toxic Codes
    message.channel.send(e) // By Jake.#5635 and Toxic Codes
 });
 
-client.on('message', message => {
-    var prefix = "!"
-     let command = message.content.split(" ")[0];
-   command = command.slice(prefix.length);
- 
-   let args = message.content.split(" ").slice(1);
- 
- 
- if(command == "رسم") {
-     var Canvas = require('canvas')
-   , Image = new Canvas.Image
-   , canvas = new Canvas(450, 170)
-   , ctx = canvas.getContext('2d');
-   ctx.font = '30px Impact';
-   let args = message.content.split(" ").slice(1);
-   
- Image.src = canvas.toBuffer();
- 
-     console.log(Image);
- ctx.drawImage(Image, 0, 0, Image.width / 470, Image.height / 170);
- ctx.fillText(args.join("  "),110, 70);
- 
- 
- ctx.beginPath();
- ctx.lineTo(50, 102);
- ctx.stroke();
- 
- message.channel.sendFile(canvas.toBuffer());
- }
- 
- });
-	    
-	    
-client.on('message', message => {    
-    var p = "!";
-            if (message.content.startsWith(p + "cto")) {
-                if(!message.channel.guild) return;
-                if (!message.member.hasPermission("MANAGE_CHANNEL"))  return;
-      var a= message.content.split(' ').slice(1).join("  ");
-      if (!a) return message.reply("اكتب كلام لوضعه في التوبيك!")
-      message.channel.setTopic(`${a}`)
-      .then(newChannel => message.channel.send(`تم تغيير التوبيك لـ **${a}**`))
-      .catch(console.error);
-            }
-        });//Toxic Codes
+
 	    
 client.on('message', message=>{
     if (message.content ===  "!leave"){
@@ -2247,29 +2203,5 @@ client.on('message', message => {
      }
  }); //Toxic Codes
 	    
-client.on('message', message => {
-    // اذا كان الشخص بوت ماينفذ الامر
-    if (message.author.bot) return;
-    
-    // `!`يتاكد ان الامر بدا بـ 
-    if (message.content.indexOf('!un') === 0) {
-        //  `!` ياخذ الرساله بس بدون الـ
-        var text = message.content.substring(1);
-        
-        // يعكس الكلام
-        var reversed = '';
-        var i = text.length;
-        
-        while (i > 0) {
-            reversed += text.substring(i - 1, i);
-            i--;
-        }
-        
-        // يرسله الرساله بالعكس مع المنشن
-        message.reply(reversed);
-    }
-}); /Toxic Codes   n3k4a
-
-
 	    
 client.login(process.env.TOKEN);
