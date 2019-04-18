@@ -2219,8 +2219,7 @@ client.on("message", (message) => {
         }).catch(() => {
             message.channel.send("Error -_-");
         });
-    }
-}); //Toxic Codes
+
 	    
 client.on('message', message => {
     if (message.content.startsWith("!!id")) {
