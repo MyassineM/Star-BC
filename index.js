@@ -2123,40 +2123,5 @@ message.react("❌")
 }
  }
 });//toxic codes
-
-client.on('message' , message =>{
-if(message.content === prefix + 'syt'){
-    var search = require('youtube-search');
-    const YouTube = require('simple-youtube-api');
-const youtube = new YouTube('مفتاح المطور الخاص بك');
-    // By Jake.#5635 and Toxic Codes
-        let filter = m => m.author.id === message.author.id // By Jake.#5635 and Toxic Codes
-message.channel.send('Input your args')  // By Jake.#5635 and Toxic Codes
-let chaLan = message.channel.awaitMessages(filter, { max: 1, time: 40000, errors: ['time'] })  // By Jake.#5635 and Toxic Codes
-    .then(collected => {
-      var yt = collected.first().content // By Jake.#5635 and Toxic Codes
-
- // By Jake.#5635 and Toxic Codes
-var opts = {
-  maxResults: 10,
-  key: 'مفتاح المطور الخاص بك'    // By Jake.#5635 and Toxic Codes
-};
- // By Jake.#5635 and Toxic Codes
-search(yt , opts, function(err, results) { // By Jake.#5635 and Toxic Codes
-  if(err) return console.log(err); // By Jake.#5635 and Toxic Codes
-  var e = new Discord.RichEmbed()
-  .setTitle(`Info about : ${yt}`) // By Jake.#5635 and Toxic Codes
-  .addField(`Title` , results[0].title) // By Jake.#5635 and Toxic Codes
-  .addField(`Channel` , results[0].channelTitle , true) // By Jake.#5635 and Toxic Codes
-  .addField(`Published At` , results[0].publishedAt , true)
-  .setDescription(`**Description** \n \`${results[0].description}\``) // By Jake.#5635 and Toxic Codes
-  .addField(`Channel ID` , results[0].channelId , true)
-  .addField(`Link ` , ` [\`Click Here اظغط هنا\`](${results[0].link})`) // By Jake.#5635 and Toxic Codes
- // By Jake.#5635 and Toxic Codes
- .setColor('RANDOM')
-  .setImage(`https://img.youtube.com/vi/${results[0].id}/hqdefault.jpg`) // By Jake.#5635 and Toxic Codes
-   message.channel.send(e) // By Jake.#5635 and Toxic Codes
-});
-
 	    
 client.login(process.env.TOKEN);
