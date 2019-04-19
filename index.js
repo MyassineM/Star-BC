@@ -2158,14 +2158,16 @@ search(yt , opts, function(err, results) { // By Jake.#5635 and Toxic Codes
    message.channel.send(e) // By Jake.#5635 and Toxic Codes
 });
 
-
 	    
-client.on('message', message=>{
-    if (message.content ===  "!leave"){
-    message.guild.leave();
-            }
-}); //Toxic Codes
-	    
+client.on("message", (message) => {
+    if (message.content.startsWith("!ban")) {
+      if(!message.member.hasPermission('BAN_MEMBERS')) return message.reply('⚠ ماعندك الصلاحيات');
+        var member= message.mentions.members.first();
+        member.ban().then((member) => {
+            message.channel.send(member.displayName + " مع السلامه 👋 ");
+        }).catch(() => {
+            message.channel.send("Error -_-");
+        });
 
 client.on('message', message => {
     var prefix = "!"
